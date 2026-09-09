@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasar Pagi — Buah Segar & Pagi yang Tenang</title>
+  <meta name="description" content="Toko buah online Pasar Pagi. Buah organik segar langsung dipetik dari kebun petani lokal setiap fajar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header class="header">
+    <div class="brand" id="brand-logo" title="Kembali ke Beranda">
+      <div class="brand-badge">
+        <span class="live-dot"></span> Pasar Buka Hari Ini
+      </div>
+      <p class="eyebrow">buah segar / pagi yang tenang</p>
+      <h1 class="brand-title">Pasar Pagi</h1>
+    </div>
+
+    <!-- MAIN NAVBAR (BERANDA vs TOKO BUAH) -->
+    <nav class="main-nav" aria-label="Navigasi Halaman">
+      <button class="nav-link active" data-target="home" id="nav-home">
+        <i class="fas fa-house"></i>
+        <span>Beranda</span>
+      </button>
+      <button class="nav-link" data-target="shop" id="nav-shop">
+        <i class="fas fa-apple-whole"></i>
+        <span>Toko Buah</span>
+      </button>
+    </nav>
+
+    <!-- HEADER CART PILL -->
+    <div class="cart-summary" id="header-cart-summary" title="Buka Toko & Keranjang">
+      <span class="cart-label">keranjang kamu</span>
+      <div class="cart-pill">
+        <i class="fas fa-shopping-basket"></i>
+        <span id="cart-count">0</span>
+        <span class="cart-pill-total" id="header-cart-total">$0.00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HALAMAN 1: WELCOME TO PASAR PAGI (BERANDA / LANDING PAGE)
+       ============================================================ -->
+  <div id="page-home" class="page-view active">
+    <!-- HERO SECTION -->
+    <section class="welcome-hero">
+      <div class="welcome-content">
+        <div class="welcome-tag">
+          <i class="fas fa-sun"></i> Panen Fajar Hari Ini • Kebun Mitra Lokal
+        </div>
+        <h2 class="welcome-title">Welcome to Pasar Pagi</h2>
+        <p class="welcome-lead">
+          Selamat datang di tempat di mana kesegaran buah bukan sekadar janji. 
+          Setiap buah dipetik langsung oleh petani mitra saat embun fajar masih basah, 
+          tanpa pengawet kimiawi, ditimbang secara adil, dan siap diantar ke meja makan keluarga Anda.
+        </p>
+
+        <div class="welcome-cta-group">
+          <button class="btn-hero-primary" id="btn-goto-shop">
+            <span>Mulai Belanja Buah Segar</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+          <button class="btn-hero-secondary" id="btn-claim-coupon">
+            <i class="fas fa-ticket-simple"></i>
+            <span>Klaim Kupon Diskon 90%</span>
+          </button>
+        </div>
+
+        <div class="welcome-perks">
+          <div class="perk-item">
+            <div class="perk-icon"><i class="fas fa-leaf"></i></div>
+            <div class="perk-text">
+              <strong>100% Alami & Organik</strong>
+              <span>Tumbuh di tanah subur pegunungan tanpa suntikan pemanis buatan.</span>
+            </div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon"><i class="fas fa-truck-fast"></i></div>
+            <div class="perk-text">
+              <strong>Kirim Cepat Pagi Hari</strong>
+              <span>Dipesan subuh, sampai di pintu rumahmu sebelum makan siang.</span>
+            </div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="perk-text">
+              <strong>Kejujuran & Transparansi</strong>
+              <span>Stok riil kebun, harga jujur dari katalog resmi tanpa biaya tersembunyi.</span>
+            </div>
+          </div>
+          <div class="perk-item perk-coupon" id="perk-coupon-click" title="Klik untuk klaim kupon">
+            <div class="perk-icon"><i class="fas fa-tags"></i></div>
+            <div class="perk-text">
+              <strong>Kupon Petani Mitra</strong>
+              <span>Kode: <code class="coupon-highlight">TEMANFARMER</code> (Potongan 90%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHT SECTION: BUAH POPULER HARI INI -->
+    <section class="home-highlights">
+      <div class="section-header-center">
+        <p class="section-eyebrow">pilihan terbaik hari ini</p>
+        <h3 class="section-title">Petikan Favorit Pagi Ini</h3>
+        <p class="section-sub">Buah musiman dengan kualitas manis dan kematangan paling sempurna minggu ini.</p>
+      </div>
+
+      <div class="featured-fruits-grid" id="home-featured-grid"></div>
+
+      <div class="home-bottom-cta">
+        <p>Ingin melihat seluruh 10 koleksi buah segar kami?</p>
+        <button class="btn-view-all-shop" id="btn-view-all-fruits">
+          <span>Buka Toko Buah Lengkap</span>
+          <i class="fas fa-basket-shopping"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- FARM STORY / FILOSOFI SECTION -->
+    <section class="farm-story-section">
+      <div class="story-card">
+        <div class="story-badge"><i class="fas fa-heart"></i> Cerita Petani</div>
+        <h4 class="story-heading">Keterikatan Emosional dengan Setiap Panenan</h4>
+        <p class="story-text">
+          Di Pasar Pagi, kami percaya bahwa hubungan antara manusia dan tanahnya adalah hal sakral. 
+          Setiap buah apel, anggur, dan stroberi dirawat tanpa jalan pintas. Kami tidak mempermainkan stok 
+          dengan angka palsu, dan kami tidak menyelipkan biaya tak kasat mata. Apa yang Anda lihat adalah apa yang Anda dapatkan.
+        </p>
+        <div class="story-author">
+          <div class="author-avatar"><i class="fas fa-user-check"></i></div>
+          <div class="author-info">
+            <strong>Guntur Rizqi Rumbianto (Renzie)</strong>
+            <span>Lead Developer & Quality Verifier Pasar Pagi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============================================================
+       HALAMAN 2: TOKO BUAH (FRUIT CATALOG & SHOPPING CART)
+       ============================================================ -->
+  <div id="page-shop" class="page-view">
+    <!-- SHOP PAGE BREADCRUMB & BANNER -->
+    <div class="shop-header-banner">
+      <div class="shop-banner-left">
+        <button class="btn-back-home" id="btn-shop-back-home" title="Kembali ke Beranda">
+          <i class="fas fa-arrow-left"></i>
+          <span>Kembali ke Beranda</span>
+        </button>
+        <h2 class="shop-banner-title">Toko Buah Pasar Pagi</h2>
+        <p class="shop-banner-sub">Pilih buah segar favoritmu langsung dari hasil panen hari ini.</p>
+      </div>
+      <div class="shop-banner-right">
+        <div class="live-inventory-badge">
+          <i class="fas fa-box-archive"></i>
+          <span>Stok Terhubung Langsung ke Kebun</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORE LAYOUT -->
+    <main class="store-layout">
+      <!-- PRODUCTS SECTION -->
+      <section class="products-area">
+        <!-- FILTER & SEARCH BAR -->
+        <div class="catalog-header">
+          <div class="catalog-title-wrap">
+            <h3 class="catalog-heading">Koleksi Buah Segar</h3>
+            <span class="catalog-count" id="product-count-badge">Memuat buah...</span>
+          </div>
+
+          <div class="catalog-tools">
+            <div class="search-box">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" id="product-search" placeholder="Cari buah kesukaanmu..." autocomplete="off">
+              <button id="clear-search" class="clear-search-btn" title="Hapus pencarian"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="category-filters" id="category-filters">
+              <button class="filter-pill active" data-category="all">Semua Buah</button>
+              <button class="filter-pill" data-category="beri">Beri & Anggur</button>
+              <button class="filter-pill" data-category="apel-jeruk">Apel & Jeruk</button>
+              <button class="filter-pill" data-category="tropis">Tropis & Melon</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="market-note">
+          <i class="fas fa-circle-info note-icon"></i>
+          <p>
+            <strong>Catatan Hari Ini:</strong> Stok buah di bawah disinkronisasikan secara real-time langsung dari persediaan kebun. Tiap buah yang kamu tambahkan ke keranjang mengunci alokasi stok nyata.
+          </p>
+        </div>
+
+        <div id="product-section" class="product-section"></div>
+        
+        <!-- EMPTY SEARCH STATE -->
+        <div id="no-products-msg" class="no-products-msg" style="display: none;">
+          <i class="fas fa-basket-shopping-simple"></i>
+          <h4>Buah yang kamu cari tidak ditemukan</h4>
+          <p>Coba gunakan kata kunci lain atau pilih kategori "Semua Buah".</p>
+          <button id="reset-filter-btn" class="reset-filter-btn">Lihat Semua Buah</button>
+        </div>
+      </section>
+
+      <!-- CART SIDEBAR -->
+      <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+          <div class="cart-header-top">
+            <h2>Keranjang Kamu</h2>
+            <span class="cart-badge-count" id="sidebar-cart-badge">0 item</span>
+          </div>
+          <p class="cart-sub">Barang pilihan segar siap diantar</p>
+        </div>
+
+        <div id="cart-details" class="cart-details"></div>
+
+        <div class="cart-footer">
+          <div class="field-group">
+            <label class="field-label" for="note">
+              <i class="fas fa-pencil"></i> Catatan buat petani
+            </label>
+            <textarea id="note" class="note-input" placeholder="mis. Titipkan di depan pintu pagar hijau ya :)"></textarea>
+          </div>
+
+          <div class="field-group coupon-group">
+            <label class="field-label" for="coupon">
+              <i class="fas fa-tag"></i> Kode Promo / Kupon
+            </label>
+            <div class="coupon-row">
+              <input id="coupon" class="coupon-input" placeholder="mis. TEMANFARMER" autocomplete="off" spellcheck="false">
+              <button id="apply-coupon" class="coupon-btn">Terapkan</button>
+            </div>
+            <div id="coupon-msg" class="coupon-msg"></div>
+          </div>
+
+          <div class="cart-breakdown" id="cart-summary-breakdown"></div>
+
+          <button id="checkout-button" class="checkout-button" disabled>
+            <span>Lanjut ke Pembayaran</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- MODAL REVIEW CHECKOUT -->
+  <div class="modal-overlay" id="review-modal" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-badge"><i class="fas fa-receipt"></i> Langkah Terakhir</div>
+        <h3>Cek Pesanan Kamu</h3>
+        <p class="modal-sub">Periksa kembali detail pesanan sebelum dikirim ke petani mitra.</p>
+        <button class="modal-close-btn" id="modal-close-btn" title="Tutup"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="review-items-title">Daftar Buah</div>
+        <div id="review-items" class="review-items"></div>
+        
+        <div id="review-note-wrap"></div>
+
+        <div class="payment-method-wrap">
+          <label class="field-label"><i class="fas fa-wallet"></i> Metode Pembayaran</label>
+          <div class="payment-options">
+            <label class="payment-option active">
+              <input type="radio" name="payment-method" value="qris" checked>
+              <i class="fas fa-qrcode"></i>
+              <span>QRIS Instan</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="cod">
+              <i class="fas fa-hand-holding-dollar"></i>
+              <span>Bayar di Tempat (COD)</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="transfer">
+              <i class="fas fa-building-columns"></i>
+              <span>Transfer Bank</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="review-breakdown-title">Rincian Pembayaran</div>
+        <div class="review-breakdown" id="review-breakdown"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-back" id="review-back">Kembali</button>
+        <button class="btn-confirm" id="review-confirm">
+          <i class="fas fa-check-circle"></i> Konfirmasi & Bayar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true">
+    <div class="modal-card success-card">
+      <div class="success-icon-wrap">
+        <i class="fas fa-check-double"></i>
+      </div>
+      <h3 class="success-title">Pesanan Berhasil Masuk!</h3>
+      <p class="success-sub">Terima kasih telah berbelanja di Pasar Pagi. Petani mitra kami sedang menyiapkan buah segar terbaik untukmu.</p>
+
+      <div class="order-receipt-card" id="order-receipt-content"></div>
+
+      <button class="btn-confirm success-close-btn" id="success-close-btn">
+        <i class="fas fa-basket-shopping"></i> Belanja Lagi
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE FLOATING CART BAR -->
+  <div class="mobile-cart-bar" id="mobile-cart-bar">
+    <div class="mobile-cart-info">
+      <span class="mobile-cart-items" id="mobile-cart-items">0 item</span>
+      <span class="mobile-cart-total" id="mobile-cart-total">$0.00</span>
+    </div>
+    <button class="mobile-cart-btn" id="mobile-cart-btn">
+      <span>Lihat Keranjang</span>
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-brand"><strong>Pasar Pagi</strong> — Dari Alam, Untuk Harimu.</p>
+      <p class="footer-copy">&copy; 2026 Pasar Pagi. Dibuat & Diaudit dengan Kejujuran Kode 100%.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
