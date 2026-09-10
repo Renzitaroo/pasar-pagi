@@ -1922,6 +1922,160 @@ body {
   color: var(--brown-sub);
 }
 
+/* FITUR TIMBANGAN BERAT & HARGA GROSIR PASAR (500g, 1kg, 2kg) */
+.product-weight-section,
+.featured-weight-section {
+  margin-bottom: 0.85rem;
+}
+
+.weight-selector-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.weight-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--brown-sub);
+}
+
+.weight-pill-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f3eae0;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.weight-pill {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--brown-sub);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.weight-pill:hover:not(.active) {
+  color: var(--brown);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.weight-pill.active {
+  background: var(--olive);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 99, 63, 0.3);
+}
+
+.grosir-tag {
+  font-size: 0.62rem;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: #cf793c;
+  color: #ffffff;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.weight-pill.active .grosir-tag {
+  background: #ffffff;
+  color: var(--olive);
+}
+
+.wholesale-saving-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #276749;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.wholesale-saving-badge i {
+  color: #38a169;
+  font-size: 0.75rem;
+}
+
+.btn-add-variant {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.45rem 1rem;
+  background: var(--olive);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-variant:hover:not(:disabled) {
+  background: var(--olive-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-add-variant:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cart-item-weight-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--olive-soft);
+  color: var(--olive);
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 6px;
+  border: 1px solid rgba(79, 99, 63, 0.2);
+}
+
+.featured-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.featured-unit {
+  font-size: 0.75rem;
+  color: var(--brown-sub);
+}
+
+.review-weight-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--olive);
+  background: var(--olive-soft);
+  padding: 1px 6px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1040px) {
   body { padding: 1.5rem; }

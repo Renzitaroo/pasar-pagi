@@ -10,111 +10,151 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 1,  
       name: "Apel Fuji",       
       category: "apel-jeruk", 
-      price: 15000, 
-      stock: 12, 
+      stockKg: 25, 
       produceId: "#4131", 
       desc: "Manis renyah dengan aroma segar alami pegunungan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736589286/25-01-11-03-50-09-954_deco_m2ofbh.jpg",
-      featured: true
+      featured: true,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 18000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 32000, saving: "Hemat Rp 4.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 58000, saving: "Grosir Hemat Rp 14.000" }
+      }
     },
     { 
       id: 2,  
       name: "Jeruk Navel",     
       category: "apel-jeruk", 
-      price: 20000, 
-      stock: 9,  
+      stockKg: 20, 
       produceId: "#4012", 
       desc: "Kaya vitamin C, bulir manis melimpah tanpa biji.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736591406/25-01-11-04-29-12-930_deco_r9gznn.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 16000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 28000, saving: "Hemat Rp 4.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 52000, saving: "Grosir Hemat Rp 12.000" }
+      }
     },
     { 
       id: 3,  
       name: "Pisang Cavendish",
       category: "tropis",     
-      price: 12000, 
-      stock: 20, 
+      stockKg: 30, 
       produceId: "#4011", 
       desc: "Tinggi potasium, kulit kuning mulus pas untuk sarapan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736591160/25-01-11-04-24-17-097_deco_htwecb.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 10000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 18000, saving: "Hemat Rp 2.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 32000, saving: "Grosir Hemat Rp 8.000" }
+      }
     },
     { 
       id: 4,  
       name: "Anggur Hitam",    
       category: "beri",       
-      price: 35000, 
-      stock: 6,  
+      stockKg: 15, 
       produceId: "#4022", 
       desc: "Bulir padat renyah, manis alami dengan antioksidan tinggi.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736589285/25-01-11-03-50-38-513_deco_spywdb.jpg",
-      featured: true
+      featured: true,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 28000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 50000, saving: "Hemat Rp 6.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 92000, saving: "Grosir Hemat Rp 20.000" }
+      }
     },
     { 
       id: 5,  
       name: "Stroberi Ciwidey",
       category: "beri",       
-      price: 45000, 
-      stock: 8,  
+      stockKg: 14, 
       produceId: "#4252", 
       desc: "Asam manis berair, dipetik segar saat fajar berkabut.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614071/25-01-11-10-44-32-511_deco_doxshi.jpg",
-      featured: true
+      featured: true,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 35000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 65000, saving: "Hemat Rp 5.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 120000, saving: "Grosir Hemat Rp 20.000" }
+      }
     },
     { 
       id: 6,  
       name: "Blueberry Segar", 
       category: "beri",       
-      price: 50000, 
-      stock: 5,  
+      stockKg: 10, 
       produceId: "#4264", 
       desc: "Superfood kaya nutrisi pelindung daya tahan tubuh.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614070/25-01-11-10-46-19-754_deco_g51gta.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 45000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 85000, saving: "Hemat Rp 5.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 160000, saving: "Grosir Hemat Rp 20.000" }
+      }
     },
     { 
       id: 7,  
       name: "Nanas Madu",      
       category: "tropis",     
-      price: 30000, 
-      stock: 7,  
+      stockKg: 20, 
       produceId: "#4430", 
       desc: "Manis harum legit, renyah tanpa sensasi gatal di lidah.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614070/25-01-11-10-46-43-469_deco_lhzog2.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 14000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 25000, saving: "Hemat Rp 3.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 45000, saving: "Grosir Hemat Rp 11.000" }
+      }
     },
     { 
       id: 8,  
       name: "Mangga Arumanis", 
       category: "tropis",     
-      price: 28000, 
-      stock: 15, 
+      stockKg: 25, 
       produceId: "#4951", 
       desc: "Daging buah tebal oranye, lembut dan manis istimewa.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614071/25-01-11-10-45-34-043_deco_dmdlw1.jpg",
-      featured: true
+      featured: true,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 18000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 32000, saving: "Hemat Rp 4.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 58000, saving: "Grosir Hemat Rp 14.000" }
+      }
     },
     { 
       id: 9,  
       name: "Kiwi Gold",       
       category: "tropis",     
-      price: 19000, 
-      stock: 10, 
+      stockKg: 16, 
       produceId: "#4301", 
       desc: "Kaya vitamin C dan serat dengan rasa manis menyegarkan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614625/25-01-11-10-55-05-579_deco_zbrqpd.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 22000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 40000, saving: "Hemat Rp 4.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 74000, saving: "Grosir Hemat Rp 14.000" }
+      }
     },
     { 
       id: 10, 
       name: "Semangka (Potong)",
       category: "tropis",    
-      price: 32000, 
-      stock: 4,  
+      stockKg: 20, 
       produceId: "#4032", 
       desc: "Manis dingin kaya elektrolit untuk menghidrasi tubuh.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614185/25-01-11-10-48-13-815_deco_ogtsmo.jpg",
-      featured: false
+      featured: false,
+      variants: {
+        "500g": { label: "500 gr", weightKg: 0.5, price: 12000, saving: null },
+        "1kg":  { label: "1 kg", weightKg: 1.0, price: 20000, saving: "Hemat Rp 4.000" },
+        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 36000, saving: "Grosir Hemat Rp 8.000" }
+      }
     }
   ];
 
@@ -122,6 +162,23 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentCategory = "all";
   let searchQuery = "";
   let currentPage = "home"; // "home" atau "shop"
+
+  // Takaran berat aktif per produk di UI (default "1kg")
+  const selectedWeight = {};
+  products.forEach(p => { selectedWeight[p.id] = "1kg"; });
+
+  // Helper kalkulasi stok berat (kg)
+  function getUsedStockKg(productId) {
+    return Object.values(cart)
+      .filter(item => item.productId === productId)
+      .reduce((sum, item) => sum + (item.weightKg * item.count), 0);
+  }
+
+  function getRemainingStockKg(product) {
+    if (!product) return 0;
+    const used = getUsedStockKg(product.id);
+    return Math.max(0, Math.round((product.stockKg - used) * 10) / 10);
+  }
 
   // Biaya penanganan transparan (Rp 3.000)
   const HANDLING_FEE = 3000;
@@ -212,9 +269,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderBreakdownRows(target, sums) {
+    const totalItems = Object.values(cart).reduce((s, i) => s + i.count, 0);
+    const totalWeight = Math.round(Object.values(cart).reduce((s, i) => s + (i.weightKg * i.count), 0) * 10) / 10;
     target.innerHTML = `
       <div class="row">
-        <span>Subtotal (${Object.values(cart).reduce((s, i) => s + i.count, 0)} item)</span>
+        <span>Subtotal (${totalItems} takaran / ${totalWeight} kg)</span>
         <span>${formatMoney(sums.subtotal)}</span>
       </div>
       <div class="row">
@@ -239,9 +298,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const featuredItems = products.filter(p => p.featured);
 
     featuredItems.forEach(product => {
-      const quantity = cart[product.id] ? cart[product.id].count : 0;
-      const sisa = product.stock - quantity;
-      const habis = sisa <= 0;
+      const curWeight = selectedWeight[product.id] || "1kg";
+      const variant = product.variants[curWeight];
+      const cartKey = `${product.id}_${curWeight}`;
+      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+      const remainingKg = getRemainingStockKg(product);
+      const isOut = remainingKg < variant.weightKg;
 
       const card = document.createElement("article");
       card.className = "featured-fruit-card";
@@ -251,16 +313,29 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="featured-badge">${getCategoryName(product.category)}</span>
         </div>
         <div class="featured-body">
+          <div class="featured-weight-section">
+            <div class="weight-pill-group">
+              <button type="button" class="weight-pill ${curWeight === '500g' ? 'active' : ''}" data-product-id="${product.id}" data-weight="500g">500 gr</button>
+              <button type="button" class="weight-pill ${curWeight === '1kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="1kg">1 kg</button>
+              <button type="button" class="weight-pill ${curWeight === '2kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="2kg">
+                2 kg <span class="grosir-tag">Grosir</span>
+              </button>
+            </div>
+          </div>
           <div class="featured-meta">
             <h4 class="featured-title">${product.name}</h4>
-            <span class="featured-price">${formatMoney(product.price)}</span>
+            <div class="featured-price-wrap">
+              <span class="featured-price">${formatMoney(variant.price)}</span>
+              <span class="featured-unit">/ ${variant.label}</span>
+            </div>
           </div>
+          ${variant.saving ? `<div class="wholesale-saving-badge"><i class="fas fa-tag"></i> ${variant.saving}</div>` : ""}
           <p class="featured-desc">${product.desc}</p>
           <div class="featured-footer">
-            <span class="featured-stock ${habis ? 'text-danger' : ''}">${habis ? 'Stok Habis' : `Sisa ${sisa} buah`}</span>
-            <button class="btn-buy-featured" data-id="${product.id}" ${habis ? 'disabled' : ''}>
+            <span class="featured-stock ${isOut ? 'text-danger' : ''}">${isOut ? 'Stok Habis' : `Sisa ${remainingKg} kg`}</span>
+            <button class="btn-buy-featured" data-product-id="${product.id}" ${isOut ? 'disabled' : ''}>
               <i class="fas fa-cart-plus"></i>
-              <span>${quantity > 0 ? `Beli Lagi (${quantity})` : 'Pesan Sekarang'}</span>
+              <span>${qtyInCart > 0 ? `Beli Lagi (${qtyInCart})` : `Pesan (${variant.label})`}</span>
             </button>
           </div>
         </div>
@@ -293,14 +368,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     filtered.forEach((product) => {
-      const quantity = cart[product.id] ? cart[product.id].count : 0;
-      const sisa = product.stock - quantity;
-      const habis = sisa <= 0;
-      const stokMenipis = sisa > 0 && sisa <= 3;
+      const curWeight = selectedWeight[product.id] || "1kg";
+      const variant = product.variants[curWeight];
+      const cartKey = `${product.id}_${curWeight}`;
+      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+      const remainingKg = getRemainingStockKg(product);
+      const isOut = remainingKg < variant.weightKg;
+      const stokMenipis = remainingKg > 0 && remainingKg <= 3;
 
       const productCard = document.createElement("article");
       productCard.classList.add("product");
-      if (habis) productCard.classList.add("sold-out");
+      if (isOut && remainingKg <= 0) productCard.classList.add("sold-out");
 
       productCard.innerHTML = `
         <div class="product-header-badge">
@@ -310,37 +388,58 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <div class="product-image-container">
           <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
-          ${habis ? `<div class="sold-out-overlay"><span>Stok Habis</span></div>` : ""}
-          ${stokMenipis ? `<div class="low-stock-ribbon"><i class="fas fa-fire"></i> Tinggal ${sisa}!</div>` : ""}
+          ${remainingKg <= 0 ? `<div class="sold-out-overlay"><span>Stok Habis</span></div>` : ""}
+          ${stokMenipis ? `<div class="low-stock-ribbon"><i class="fas fa-fire"></i> Tinggal ${remainingKg} kg!</div>` : ""}
+        </div>
+
+        <div class="product-weight-section">
+          <div class="weight-selector-wrap">
+            <span class="weight-label">Pilih Takaran:</span>
+            <div class="weight-pill-group">
+              <button type="button" class="weight-pill ${curWeight === '500g' ? 'active' : ''}" data-product-id="${product.id}" data-weight="500g">500 gr</button>
+              <button type="button" class="weight-pill ${curWeight === '1kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="1kg">1 kg</button>
+              <button type="button" class="weight-pill ${curWeight === '2kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="2kg">
+                2 kg <span class="grosir-tag">Grosir</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="item-meta">
           <div class="meta-left">
             <h3 class="product-title">${product.name}</h3>
             <p class="product-desc">${product.desc}</p>
+            ${variant.saving ? `<div class="wholesale-saving-badge"><i class="fas fa-tag"></i> ${variant.saving}</div>` : ""}
           </div>
           <div class="meta-right">
-            <p class="price">${formatMoney(product.price)}</p>
-            <span class="price-unit">/ buah</span>
+            <p class="price">${formatMoney(variant.price)}</p>
+            <span class="price-unit">/ ${variant.label}</span>
           </div>
         </div>
 
         <div class="product-footer-row">
-          <div class="stock-status ${habis ? 'stock-empty' : stokMenipis ? 'stock-warning' : 'stock-ok'}">
-            <i class="fas ${habis ? 'fa-ban' : stokMenipis ? 'fa-clock' : 'fa-circle-check'}"></i>
-            <span>${habis ? "Stok habis hari ini" : `Sisa stok: ${sisa} buah`}</span>
+          <div class="stock-status ${remainingKg <= 0 ? 'stock-empty' : stokMenipis ? 'stock-warning' : 'stock-ok'}">
+            <i class="fas ${remainingKg <= 0 ? 'fa-ban' : stokMenipis ? 'fa-clock' : 'fa-circle-check'}"></i>
+            <span>${remainingKg <= 0 ? "Stok habis hari ini" : `Sisa stok: ${remainingKg} kg`}</span>
           </div>
 
           <div class="quantity-controls">
-            <button class="quantity-button minus-button" data-id="${product.id}" ${quantity === 0 ? "disabled" : ""} title="Kurangi">
-              <i class="fas fa-minus"></i>
-            </button>
-            <span class="quantity-display ${quantity > 0 ? 'active' : ''}" id="quantity-${product.id}">
-              ${quantity}
-            </span>
-            <button class="quantity-button plus-button" data-id="${product.id}" ${habis ? "disabled" : ""} title="Tambah">
-              <i class="fas fa-plus"></i>
-            </button>
+            ${qtyInCart === 0 ? `
+              <button class="btn-add-variant btn-action-add" data-product-id="${product.id}" ${isOut ? "disabled" : ""}>
+                <i class="fas fa-cart-plus"></i>
+                <span>Beli</span>
+              </button>
+            ` : `
+              <button class="quantity-button minus-button" data-cart-key="${cartKey}" title="Kurangi">
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="quantity-display active" id="quantity-${cartKey}">
+                ${qtyInCart}
+              </span>
+              <button class="quantity-button plus-button" data-product-id="${product.id}" ${isOut ? "disabled" : ""} title="Tambah">
+                <i class="fas fa-plus"></i>
+              </button>
+            `}
           </div>
         </div>
       `;
@@ -360,9 +459,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /* HITUNG JUMLAH BARANG DI KERANJANG */
   function updateCartCount() {
     const totalCount = Object.values(cart).reduce((sum, item) => sum + item.count, 0);
+    const totalKg = Math.round(Object.values(cart).reduce((sum, item) => sum + (item.weightKg * item.count), 0) * 10) / 10;
     cartCountEl.textContent = totalCount;
-    sidebarCartBadgeEl.textContent = `${totalCount} item`;
-    mobileCartItems.textContent = `${totalCount} item`;
+    sidebarCartBadgeEl.textContent = `${totalCount} item (${totalKg} kg)`;
+    mobileCartItems.textContent = `${totalCount} item (${totalKg} kg)`;
 
     let subtotal = 0;
     Object.values(cart).forEach((item) => {
@@ -407,40 +507,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     cartEntries.forEach((item) => {
-      // RESINKRONISASI HARGA RESMI DARI KATALOG (Anti Manipulasi Client)
-      const official = products.find((p) => p.id == item.id);
-      if (official) {
-        item.price = official.price;
+      // RESINKRONISASI HARGA & TAKARAN RESMI DARI KATALOG (Anti Manipulasi Client)
+      const official = products.find((p) => p.id === item.productId);
+      if (official && official.variants[item.variantKey]) {
+        const v = official.variants[item.variantKey];
+        item.price = v.price;
         item.name = official.name;
+        item.weightLabel = v.label;
+        item.weightKg = v.weightKg;
       }
 
       const itemTotal = item.count * item.price;
       totalPrice += itemTotal;
 
-      const maxStock = official ? official.stock : item.count;
-      const canAddMore = item.count < maxStock;
+      const remainingKg = getRemainingStockKg(official);
+      const canAddMore = remainingKg >= item.weightKg;
 
       const listItem = document.createElement("div");
       listItem.classList.add("cart-item");
       listItem.innerHTML = `
         <div class="cart-item-top">
           <div class="cart-item-info">
-            <div class="cart-item-name">${item.name}</div>
-            <div class="cart-item-price">${formatMoney(item.price)} / buah</div>
+            <div class="cart-item-name">
+              ${item.name}
+              <span class="cart-item-weight-badge">${item.weightLabel}</span>
+            </div>
+            <div class="cart-item-price">${formatMoney(item.price)} / ${item.weightLabel}</div>
           </div>
           <strong class="cart-item-total">${formatMoney(itemTotal)}</strong>
         </div>
         <div class="cart-item-controls">
           <div class="cart-stepper">
-            <button class="cart-qty-btn cart-minus" data-id="${item.id}" title="Kurangi satu">
+            <button class="cart-qty-btn cart-minus" data-cart-key="${item.key}" title="Kurangi satu">
               <i class="fas fa-minus"></i>
             </button>
             <span class="cart-qty-val">${item.count}</span>
-            <button class="cart-qty-btn cart-plus" data-id="${item.id}" ${!canAddMore ? "disabled" : ""} title="Tambah satu">
+            <button class="cart-qty-btn cart-plus" data-cart-key="${item.key}" ${!canAddMore ? "disabled" : ""} title="Tambah satu">
               <i class="fas fa-plus"></i>
             </button>
           </div>
-          <button class="cart-delete-btn delete-icon" data-id="${item.id}" title="Hapus dari keranjang">
+          <button class="cart-delete-btn delete-icon" data-cart-key="${item.key}" title="Hapus dari keranjang">
             <i class="fas fa-trash-can"></i>
           </button>
         </div>
@@ -469,40 +575,55 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHomeFeatured();
   }
 
-  /* TAMBAH BARANG */
-  function addToCart(id) {
-    const product = products.find((item) => item.id == id);
+  /* TAMBAH BARANG KE KERANJANG BERDASARKAN TAKARAN */
+  function addToCart(productId, weightKey = null) {
+    const product = products.find((item) => item.id == productId);
     if (!product) return;
 
-    const current = cart[id] ? cart[id].count : 0;
-    if (current >= product.stock) {
-      showToast(`⚠️ Stok ${product.name} telah mencapai batas maksimum (${product.stock} buah).`);
+    const chosenWeight = weightKey || selectedWeight[productId] || "1kg";
+    const variant = product.variants[chosenWeight];
+    if (!variant) return;
+
+    const remainingKg = getRemainingStockKg(product);
+    if (remainingKg < variant.weightKg) {
+      showToast(`⚠️ Stok ${product.name} tidak mencukupi untuk takaran ${variant.label} (tersisa ${remainingKg} kg).`);
       return;
     }
 
-    if (!cart[id]) {
-      cart[id] = { ...product, count: 0 };
+    const cartKey = `${product.id}_${chosenWeight}`;
+    if (!cart[cartKey]) {
+      cart[cartKey] = {
+        key: cartKey,
+        productId: product.id,
+        variantKey: chosenWeight,
+        name: product.name,
+        weightLabel: variant.label,
+        weightKg: variant.weightKg,
+        price: variant.price,
+        count: 0
+      };
     }
-    cart[id].price = product.price; // Selalu pakai harga katalog resmi
-    cart[id].count++;
+
+    cart[cartKey].count++;
+    cart[cartKey].price = variant.price; // Selalu sinkronkan harga resmi
     renderCart();
   }
 
-  /* KURANGI BARANG */
-  function removeFromCart(id) {
-    if (!cart[id]) return;
-    cart[id].count--;
-    if (cart[id].count <= 0) {
-      delete cart[id];
+  /* KURANGI BARANG DARI KERANJANG */
+  function removeFromCart(cartKey) {
+    if (!cart[cartKey]) return;
+    cart[cartKey].count--;
+    if (cart[cartKey].count <= 0) {
+      delete cart[cartKey];
     }
     renderCart();
   }
 
-  /* HAPUS BARANG */
-  function deleteItem(id) {
-    if (!cart[id]) return;
-    const name = cart[id].name;
-    delete cart[id];
+  /* HAPUS BARANG DARI KERANJANG */
+  function deleteItem(cartKey) {
+    if (!cart[cartKey]) return;
+    const name = `${cart[cartKey].name} (${cart[cartKey].weightLabel})`;
+    delete cart[cartKey];
     renderCart();
     showToast(`🗑️ ${name} dihapus dari keranjang.`);
   }
@@ -563,8 +684,8 @@ document.addEventListener("DOMContentLoaded", () => {
       row.className = "review-line";
       row.innerHTML = `
         <div class="review-line-left">
-          <span class="review-item-name">${item.name}</span>
-          <span class="review-item-qty">x ${item.count} buah</span>
+          <span class="review-item-name">${item.name} <strong class="review-weight-badge">(${item.weightLabel})</strong></span>
+          <span class="review-item-qty">x ${item.count}</span>
         </div>
         <span class="review-item-total">${formatMoney(line)}</span>
       `;
@@ -598,7 +719,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   }
 
-  /* PESANAN MASUK (FIX BUG STOK NYATA BERKURANG) */
+  /* PESANAN MASUK (PENGURANGAN STOK TIMBANGAN KG) */
   function placeOrder() {
     const breakdown = buildBreakdown(
       Object.values(cart).reduce((sum, item) => sum + item.count * item.price, 0)
@@ -610,11 +731,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const paymentMethodEl = document.querySelector('input[name="payment-method"]:checked');
     const paymentMethodName = paymentMethodEl ? paymentMethodEl.parentElement.querySelector("span").textContent : "QRIS Instan";
 
-    // PENGURANGAN STOK NYATA PADA KATALOG
+    // PENGURANGAN STOK NYATA BERBASIS KG
     orderedItems.forEach((ordered) => {
-      const official = products.find((p) => p.id == ordered.id);
+      const official = products.find((p) => p.id === ordered.productId);
       if (official) {
-        official.stock = Math.max(0, official.stock - ordered.count);
+        official.stockKg = Math.max(0, Math.round((official.stockKg - (ordered.weightKg * ordered.count)) * 10) / 10);
       }
     });
 
@@ -638,7 +759,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const receiptEl = document.getElementById("order-receipt-content");
     const itemsListHtml = items.map(i => `
       <div class="receipt-item-row">
-        <span>${i.name} &times; ${i.count}</span>
+        <span>${i.name} (${i.weightLabel}) &times; ${i.count}</span>
         <strong>${formatMoney(i.count * i.price)}</strong>
       </div>
     `).join("");
@@ -693,7 +814,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
 
   document.addEventListener("click", (event) => {
-    const target = event.target.closest("button, .cart-summary, .perk-coupon, .filter-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo");
+    const target = event.target.closest("button, .cart-summary, .perk-coupon, .filter-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .weight-pill");
     if (!target) return;
 
     // Navigasi Tabs Navbar
@@ -710,9 +831,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Klik tombol "Beli Sekarang" di featured fruits Beranda
+    // Klik tombol pilihan takaran timbangan (500 gr, 1 kg, 2 kg)
+    if (target.classList.contains("weight-pill")) {
+      const pId = Number(target.dataset.productId);
+      const w = target.dataset.weight;
+      if (pId && w) {
+        selectedWeight[pId] = w;
+        renderProducts();
+        renderHomeFeatured();
+      }
+      return;
+    }
+
+    // Klik tombol "Pesan" di featured fruits Beranda
     if (target.classList.contains("btn-buy-featured")) {
-      addToCart(target.dataset.id);
+      const pId = Number(target.dataset.productId || target.dataset.id);
+      addToCart(pId);
       navigateTo("shop", "cart");
       showToast("🍎 Buah ditambahkan ke keranjang!");
       return;
@@ -733,25 +867,49 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Tambah di kartu produk toko
-    if (target.classList.contains("plus-button")) {
-      addToCart(target.dataset.id);
+    // Tambah di kartu produk toko (tombol Beli atau plus stepper)
+    if (target.classList.contains("plus-button") || target.classList.contains("btn-action-add")) {
+      const pId = Number(target.dataset.productId);
+      if (pId) {
+        addToCart(pId);
+      }
+      return;
     }
-    // Kurang di kartu produk toko
+
+    // Kurang di kartu produk toko (minus stepper)
     if (target.classList.contains("minus-button")) {
-      removeFromCart(target.dataset.id);
+      const cartKey = target.dataset.cartKey;
+      if (cartKey) {
+        removeFromCart(cartKey);
+      }
+      return;
     }
-    // Tambah di keranjang (stepper)
+
+    // Tambah di keranjang sidebar (stepper)
     if (target.classList.contains("cart-plus")) {
-      addToCart(target.dataset.id);
+      const cartKey = target.dataset.cartKey;
+      if (cartKey && cart[cartKey]) {
+        addToCart(cart[cartKey].productId, cart[cartKey].variantKey);
+      }
+      return;
     }
-    // Kurang di keranjang (stepper)
+
+    // Kurang di keranjang sidebar (stepper)
     if (target.classList.contains("cart-minus")) {
-      removeFromCart(target.dataset.id);
+      const cartKey = target.dataset.cartKey;
+      if (cartKey) {
+        removeFromCart(cartKey);
+      }
+      return;
     }
-    // Hapus di keranjang
+
+    // Hapus di keranjang sidebar
     if (target.classList.contains("delete-icon") || target.classList.contains("cart-delete-btn")) {
-      deleteItem(target.dataset.id);
+      const cartKey = target.dataset.cartKey;
+      if (cartKey) {
+        deleteItem(cartKey);
+      }
+      return;
     }
     // Kupon tombol di toko
     if (target.id === "apply-coupon") {
