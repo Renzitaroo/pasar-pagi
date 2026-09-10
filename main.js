@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 1,  
       name: "Apel Fuji",       
       category: "apel-jeruk", 
-      price: 1.5, 
+      price: 15000, 
       stock: 12, 
       produceId: "#4131", 
       desc: "Manis renyah dengan aroma segar alami pegunungan.", 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 2,  
       name: "Jeruk Navel",     
       category: "apel-jeruk", 
-      price: 2.0, 
+      price: 20000, 
       stock: 9,  
       produceId: "#4012", 
       desc: "Kaya vitamin C, bulir manis melimpah tanpa biji.", 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 3,  
       name: "Pisang Cavendish",
       category: "tropis",     
-      price: 1.2, 
+      price: 12000, 
       stock: 20, 
       produceId: "#4011", 
       desc: "Tinggi potasium, kulit kuning mulus pas untuk sarapan.", 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 4,  
       name: "Anggur Hitam",    
       category: "beri",       
-      price: 3.5, 
+      price: 35000, 
       stock: 6,  
       produceId: "#4022", 
       desc: "Bulir padat renyah, manis alami dengan antioksidan tinggi.", 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 5,  
       name: "Stroberi Ciwidey",
       category: "beri",       
-      price: 4.5, 
+      price: 45000, 
       stock: 8,  
       produceId: "#4252", 
       desc: "Asam manis berair, dipetik segar saat fajar berkabut.", 
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 6,  
       name: "Blueberry Segar", 
       category: "beri",       
-      price: 5.0, 
+      price: 50000, 
       stock: 5,  
       produceId: "#4264", 
       desc: "Superfood kaya nutrisi pelindung daya tahan tubuh.", 
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 7,  
       name: "Nanas Madu",      
       category: "tropis",     
-      price: 3.0, 
+      price: 30000, 
       stock: 7,  
       produceId: "#4430", 
       desc: "Manis harum legit, renyah tanpa sensasi gatal di lidah.", 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 8,  
       name: "Mangga Arumanis", 
       category: "tropis",     
-      price: 2.8, 
+      price: 28000, 
       stock: 15, 
       produceId: "#4951", 
       desc: "Daging buah tebal oranye, lembut dan manis istimewa.", 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 9,  
       name: "Kiwi Gold",       
       category: "tropis",     
-      price: 1.9, 
+      price: 19000, 
       stock: 10, 
       produceId: "#4301", 
       desc: "Kaya vitamin C dan serat dengan rasa manis menyegarkan.", 
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 10, 
       name: "Semangka (Potong)",
       category: "tropis",    
-      price: 3.2, 
+      price: 32000, 
       stock: 4,  
       produceId: "#4032", 
       desc: "Manis dingin kaya elektrolit untuk menghidrasi tubuh.", 
@@ -123,8 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchQuery = "";
   let currentPage = "home"; // "home" atau "shop"
 
-  // Biaya penanganan transparan
-  const HANDLING_FEE = 0.30;
+  // Biaya penanganan transparan (Rp 3.000)
+  const HANDLING_FEE = 3000;
 
   // Kupon divalidasi via HASH SHA-256 (Hardening Client)
   // Hash dari "TEMANFARMER"
@@ -196,18 +196,18 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
   }
 
-  // Format uang aman
+  // Format mata uang Rupiah (IDR)
   function formatMoney(amount) {
-    const safeAmount = Math.round((amount + Number.EPSILON) * 100) / 100;
-    return `$${safeAmount.toFixed(2)}`;
+    const safeAmount = Math.round(Number(amount) || 0);
+    return `Rp ${safeAmount.toLocaleString("id-ID")}`;
   }
 
   // Sumber kebenaran tunggal untuk rincian biaya
   function buildBreakdown(subtotal) {
     const fee = subtotal > 0 ? HANDLING_FEE : 0;
     const grossTotal = subtotal + fee;
-    const potongan = Math.round((grossTotal * diskon + Number.EPSILON) * 100) / 100;
-    const total = Math.max(0, Math.round((grossTotal - potongan + Number.EPSILON) * 100) / 100);
+    const potongan = Math.round(grossTotal * diskon);
+    const total = Math.max(0, grossTotal - potongan);
     return { subtotal, fee, potongan, total };
   }
 
