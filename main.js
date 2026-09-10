@@ -10,151 +10,111 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 1,  
       name: "Apel Fuji",       
       category: "apel-jeruk", 
+      basePricePerKg: 35000, 
       stockKg: 25, 
       produceId: "#4131", 
       desc: "Manis renyah dengan aroma segar alami pegunungan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736589286/25-01-11-03-50-09-954_deco_m2ofbh.jpg",
-      featured: true,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 18000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 32000, saving: "Hemat Rp 4.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 58000, saving: "Grosir Hemat Rp 14.000" }
-      }
+      featured: true
     },
     { 
       id: 2,  
       name: "Jeruk Navel",     
       category: "apel-jeruk", 
+      basePricePerKg: 30000, 
       stockKg: 20, 
       produceId: "#4012", 
       desc: "Kaya vitamin C, bulir manis melimpah tanpa biji.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736591406/25-01-11-04-29-12-930_deco_r9gznn.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 16000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 28000, saving: "Hemat Rp 4.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 52000, saving: "Grosir Hemat Rp 12.000" }
-      }
+      featured: false
     },
     { 
       id: 3,  
       name: "Pisang Cavendish",
       category: "tropis",     
+      basePricePerKg: 20000, 
       stockKg: 30, 
       produceId: "#4011", 
       desc: "Tinggi potasium, kulit kuning mulus pas untuk sarapan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736591160/25-01-11-04-24-17-097_deco_htwecb.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 10000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 18000, saving: "Hemat Rp 2.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 32000, saving: "Grosir Hemat Rp 8.000" }
-      }
+      featured: false
     },
     { 
       id: 4,  
       name: "Anggur Hitam",    
       category: "beri",       
+      basePricePerKg: 55000, 
       stockKg: 15, 
       produceId: "#4022", 
       desc: "Bulir padat renyah, manis alami dengan antioksidan tinggi.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736589285/25-01-11-03-50-38-513_deco_spywdb.jpg",
-      featured: true,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 28000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 50000, saving: "Hemat Rp 6.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 92000, saving: "Grosir Hemat Rp 20.000" }
-      }
+      featured: true
     },
     { 
       id: 5,  
       name: "Stroberi Ciwidey",
       category: "beri",       
+      basePricePerKg: 70000, 
       stockKg: 14, 
       produceId: "#4252", 
       desc: "Asam manis berair, dipetik segar saat fajar berkabut.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614071/25-01-11-10-44-32-511_deco_doxshi.jpg",
-      featured: true,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 35000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 65000, saving: "Hemat Rp 5.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 120000, saving: "Grosir Hemat Rp 20.000" }
-      }
+      featured: true
     },
     { 
       id: 6,  
       name: "Blueberry Segar", 
       category: "beri",       
+      basePricePerKg: 95000, 
       stockKg: 10, 
       produceId: "#4264", 
       desc: "Superfood kaya nutrisi pelindung daya tahan tubuh.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614070/25-01-11-10-46-19-754_deco_g51gta.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 45000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 85000, saving: "Hemat Rp 5.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 160000, saving: "Grosir Hemat Rp 20.000" }
-      }
+      featured: false
     },
     { 
       id: 7,  
       name: "Nanas Madu",      
       category: "tropis",     
+      basePricePerKg: 28000, 
       stockKg: 20, 
       produceId: "#4430", 
       desc: "Manis harum legit, renyah tanpa sensasi gatal di lidah.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614070/25-01-11-10-46-43-469_deco_lhzog2.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 14000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 25000, saving: "Hemat Rp 3.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 45000, saving: "Grosir Hemat Rp 11.000" }
-      }
+      featured: false
     },
     { 
       id: 8,  
       name: "Mangga Arumanis", 
       category: "tropis",     
+      basePricePerKg: 35000, 
       stockKg: 25, 
       produceId: "#4951", 
       desc: "Daging buah tebal oranye, lembut dan manis istimewa.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614071/25-01-11-10-45-34-043_deco_dmdlw1.jpg",
-      featured: true,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 18000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 32000, saving: "Hemat Rp 4.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 58000, saving: "Grosir Hemat Rp 14.000" }
-      }
+      featured: true
     },
     { 
       id: 9,  
       name: "Kiwi Gold",       
       category: "tropis",     
+      basePricePerKg: 45000, 
       stockKg: 16, 
       produceId: "#4301", 
       desc: "Kaya vitamin C dan serat dengan rasa manis menyegarkan.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614625/25-01-11-10-55-05-579_deco_zbrqpd.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 22000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 40000, saving: "Hemat Rp 4.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 74000, saving: "Grosir Hemat Rp 14.000" }
-      }
+      featured: false
     },
     { 
       id: 10, 
       name: "Semangka (Potong)",
       category: "tropis",    
+      basePricePerKg: 22000, 
       stockKg: 20, 
       produceId: "#4032", 
       desc: "Manis dingin kaya elektrolit untuk menghidrasi tubuh.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614185/25-01-11-10-48-13-815_deco_ogtsmo.jpg",
-      featured: false,
-      variants: {
-        "500g": { label: "500 gr", weightKg: 0.5, price: 12000, saving: null },
-        "1kg":  { label: "1 kg", weightKg: 1.0, price: 20000, saving: "Hemat Rp 4.000" },
-        "2kg":  { label: "2 kg (Grosir)", weightKg: 2.0, price: 36000, saving: "Grosir Hemat Rp 8.000" }
-      }
+      featured: false
     }
   ];
 
@@ -163,9 +123,53 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchQuery = "";
   let currentPage = "home"; // "home" atau "shop"
 
-  // Takaran berat aktif per produk di UI (default "1kg")
-  const selectedWeight = {};
-  products.forEach(p => { selectedWeight[p.id] = "1kg"; });
+  // State berat per produk (default 1.0 kg)
+  const selectedWeightKg = {};
+  products.forEach(p => { selectedWeightKg[p.id] = 1.0; });
+
+  // Format tampilan label berat (gr jika < 1kg, kg jika >= 1kg)
+  function formatWeightLabel(kg) {
+    if (kg < 1) {
+      return `${Math.round(kg * 1000)} gr`;
+    }
+    return `${Number(kg.toFixed(2))} kg`;
+  }
+
+  // Persentase posisi pengisi kapsul volume HP (0% s/d 100%)
+  function getVolumePercent(weightKg) {
+    const min = 0.25;
+    const max = 5.0;
+    return Math.min(100, Math.max(0, ((weightKg - min) / (max - min)) * 100));
+  }
+
+  // Kalkulasi harga dinamis berdasarkan berat dan diskon grosir bertingkat
+  function calculatePriceForWeight(product, weightKg) {
+    const cleanWeight = Math.min(5.0, Math.max(0.25, Math.round(weightKg * 4) / 4));
+    let discountRate = 0;
+    let savingLabel = null;
+
+    if (cleanWeight >= 3.0) {
+      discountRate = 0.20;
+      savingLabel = "🌟 Borongan Hemat 20%";
+    } else if (cleanWeight >= 2.0) {
+      discountRate = 0.15;
+      savingLabel = "🔥 Grosir Hemat 15%";
+    } else if (cleanWeight >= 1.0) {
+      discountRate = 0.10;
+      savingLabel = "🏷️ Hemat 10% (Porsi Keluarga)";
+    }
+
+    const ratePerKg = Math.round(product.basePricePerKg * (1 - discountRate));
+    const totalPrice = Math.round(ratePerKg * cleanWeight);
+
+    return {
+      weightKg: cleanWeight,
+      totalPrice,
+      ratePerKg,
+      discountRate,
+      savingLabel
+    };
+  }
 
   // Helper kalkulasi stok berat (kg)
   function getUsedStockKg(productId) {
@@ -178,6 +182,109 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!product) return 0;
     const used = getUsedStockKg(product.id);
     return Math.max(0, Math.round((product.stockKg - used) * 10) / 10);
+  }
+
+  // Render komponen slider model volume HP
+  function renderPhoneVolumeControl(productId, currentWeight) {
+    const percent = getVolumePercent(currentWeight);
+    const weightLabel = formatWeightLabel(currentWeight);
+
+    return `
+      <div class="phone-volume-section">
+        <div class="volume-header-row">
+          <span class="volume-label"><i class="fas fa-sliders"></i> Geser Takaran:</span>
+          <span class="volume-quick-weight v-header-weight-${productId}">${weightLabel}</span>
+        </div>
+
+        <div class="volume-control-wrap">
+          <button type="button" class="volume-step-btn volume-minus" data-product-id="${productId}" title="Kurangi Volume (-250g)">
+            <i class="fas fa-minus"></i>
+          </button>
+
+          <div class="volume-capsule-track">
+            <div class="volume-capsule-fill v-fill-${productId}" style="width: ${percent}%;"></div>
+            <div class="volume-capsule-content">
+              <i class="fas fa-scale-balanced"></i>
+              <span class="volume-capsule-text v-capsule-text-${productId}">${weightLabel}</span>
+            </div>
+            <input type="range" 
+                   class="volume-native-slider v-native-slider-${productId}" 
+                   data-product-id="${productId}" 
+                   min="0.25" 
+                   max="5.0" 
+                   step="0.25" 
+                   value="${currentWeight}" 
+                   aria-label="Geser takaran buah">
+          </div>
+
+          <button type="button" class="volume-step-btn volume-plus" data-product-id="${productId}" title="Tambah Volume (+250g)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+        <div class="volume-preset-chips">
+          <button type="button" class="preset-chip ${currentWeight === 0.5 ? 'active' : ''}" data-product-id="${productId}" data-weight="0.5">500 gr</button>
+          <button type="button" class="preset-chip ${currentWeight === 1.0 ? 'active' : ''}" data-product-id="${productId}" data-weight="1.0">1 kg</button>
+          <button type="button" class="preset-chip ${currentWeight === 2.0 ? 'active' : ''}" data-product-id="${productId}" data-weight="2.0">2 kg</button>
+          <button type="button" class="preset-chip ${currentWeight === 3.0 ? 'active' : ''}" data-product-id="${productId}" data-weight="3.0">3 kg</button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Update visual slider volume tanpa full-render (60 FPS smooth)
+  function updateCardVolumeUI(productId, newWeightKg) {
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+
+    const calc = calculatePriceForWeight(product, newWeightKg);
+    selectedWeightKg[productId] = calc.weightKg;
+    const percent = getVolumePercent(calc.weightKg);
+    const weightLabel = formatWeightLabel(calc.weightKg);
+
+    // Update fill level kapsul
+    document.querySelectorAll(`.v-fill-${productId}`).forEach(el => el.style.width = `${percent}%`);
+    // Update teks kapsul
+    document.querySelectorAll(`.v-capsule-text-${productId}`).forEach(el => el.textContent = weightLabel);
+    // Update badge berat header
+    document.querySelectorAll(`.v-header-weight-${productId}`).forEach(el => el.textContent = weightLabel);
+    // Update input range value
+    document.querySelectorAll(`.v-native-slider-${productId}`).forEach(el => el.value = calc.weightKg);
+    // Update harga total
+    document.querySelectorAll(`.v-price-${productId}`).forEach(el => el.textContent = formatMoney(calc.totalPrice));
+    // Update satuan
+    document.querySelectorAll(`.v-unit-${productId}`).forEach(el => el.textContent = `/ ${weightLabel}`);
+    
+    // Update badge hemat grosir
+    document.querySelectorAll(`.v-saving-${productId}`).forEach(el => {
+      if (calc.savingLabel) {
+        el.className = "wholesale-saving-badge";
+        el.innerHTML = `<i class="fas fa-tag"></i> ${calc.savingLabel}`;
+      } else {
+        el.className = "wholesale-saving-badge empty";
+        el.innerHTML = "";
+      }
+    });
+
+    // Update preset chips
+    document.querySelectorAll(`.preset-chip[data-product-id="${productId}"]`).forEach(chip => {
+      const chipW = Number(chip.dataset.weight);
+      chip.classList.toggle("active", Math.abs(chipW - calc.weightKg) < 0.05);
+    });
+
+    // Update teks dan status tombol beli berdasarkan stok & keranjang
+    const remainingKg = getRemainingStockKg(product);
+    const isOut = remainingKg < calc.weightKg;
+    const cartKey = `${productId}_${calc.weightKg}kg`;
+    const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+
+    document.querySelectorAll(`.btn-buy-featured[data-product-id="${productId}"], .btn-action-add[data-product-id="${productId}"]`).forEach(btn => {
+      btn.disabled = isOut;
+    });
+
+    document.querySelectorAll(`.btn-buy-text-${productId}`).forEach(el => {
+      el.textContent = isOut ? "Stok Kurang" : (qtyInCart > 0 ? `Beli Lagi (${qtyInCart} di keranjang)` : `Beli (${weightLabel})`);
+    });
   }
 
   // Biaya penanganan transparan (Rp 3.000)
@@ -298,12 +405,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const featuredItems = products.filter(p => p.featured);
 
     featuredItems.forEach(product => {
-      const curWeight = selectedWeight[product.id] || "1kg";
-      const variant = product.variants[curWeight];
-      const cartKey = `${product.id}_${curWeight}`;
-      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+      const curWeight = selectedWeightKg[product.id] || 1.0;
+      const calc = calculatePriceForWeight(product, curWeight);
       const remainingKg = getRemainingStockKg(product);
-      const isOut = remainingKg < variant.weightKg;
+      const isOut = remainingKg < calc.weightKg;
+      const weightLabel = formatWeightLabel(calc.weightKg);
+      const cartKey = `${product.id}_${calc.weightKg}kg`;
+      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
 
       const card = document.createElement("article");
       card.className = "featured-fruit-card";
@@ -313,29 +421,23 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="featured-badge">${getCategoryName(product.category)}</span>
         </div>
         <div class="featured-body">
-          <div class="featured-weight-section">
-            <div class="weight-pill-group">
-              <button type="button" class="weight-pill ${curWeight === '500g' ? 'active' : ''}" data-product-id="${product.id}" data-weight="500g">500 gr</button>
-              <button type="button" class="weight-pill ${curWeight === '1kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="1kg">1 kg</button>
-              <button type="button" class="weight-pill ${curWeight === '2kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="2kg">
-                2 kg <span class="grosir-tag">Grosir</span>
-              </button>
-            </div>
-          </div>
+          ${renderPhoneVolumeControl(product.id, calc.weightKg)}
           <div class="featured-meta">
             <h4 class="featured-title">${product.name}</h4>
             <div class="featured-price-wrap">
-              <span class="featured-price">${formatMoney(variant.price)}</span>
-              <span class="featured-unit">/ ${variant.label}</span>
+              <span class="featured-price v-price-${product.id}">${formatMoney(calc.totalPrice)}</span>
+              <span class="featured-unit v-unit-${product.id}">/ ${weightLabel}</span>
             </div>
           </div>
-          ${variant.saving ? `<div class="wholesale-saving-badge"><i class="fas fa-tag"></i> ${variant.saving}</div>` : ""}
+          <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
+            ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
+          </div>
           <p class="featured-desc">${product.desc}</p>
           <div class="featured-footer">
             <span class="featured-stock ${isOut ? 'text-danger' : ''}">${isOut ? 'Stok Habis' : `Sisa ${remainingKg} kg`}</span>
             <button class="btn-buy-featured" data-product-id="${product.id}" ${isOut ? 'disabled' : ''}>
               <i class="fas fa-cart-plus"></i>
-              <span>${qtyInCart > 0 ? `Beli Lagi (${qtyInCart})` : `Pesan (${variant.label})`}</span>
+              <span class="btn-buy-text-${product.id}">${isOut ? 'Stok Kurang' : (qtyInCart > 0 ? `Beli Lagi (${qtyInCart} di keranjang)` : `Beli (${weightLabel})`)}</span>
             </button>
           </div>
         </div>
@@ -368,13 +470,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     filtered.forEach((product) => {
-      const curWeight = selectedWeight[product.id] || "1kg";
-      const variant = product.variants[curWeight];
-      const cartKey = `${product.id}_${curWeight}`;
-      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+      const curWeight = selectedWeightKg[product.id] || 1.0;
+      const calc = calculatePriceForWeight(product, curWeight);
       const remainingKg = getRemainingStockKg(product);
-      const isOut = remainingKg < variant.weightKg;
+      const isOut = remainingKg < calc.weightKg;
       const stokMenipis = remainingKg > 0 && remainingKg <= 3;
+      const weightLabel = formatWeightLabel(calc.weightKg);
+      const cartKey = `${product.id}_${calc.weightKg}kg`;
+      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
 
       const productCard = document.createElement("article");
       productCard.classList.add("product");
@@ -392,28 +495,19 @@ document.addEventListener("DOMContentLoaded", () => {
           ${stokMenipis ? `<div class="low-stock-ribbon"><i class="fas fa-fire"></i> Tinggal ${remainingKg} kg!</div>` : ""}
         </div>
 
-        <div class="product-weight-section">
-          <div class="weight-selector-wrap">
-            <span class="weight-label">Pilih Takaran:</span>
-            <div class="weight-pill-group">
-              <button type="button" class="weight-pill ${curWeight === '500g' ? 'active' : ''}" data-product-id="${product.id}" data-weight="500g">500 gr</button>
-              <button type="button" class="weight-pill ${curWeight === '1kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="1kg">1 kg</button>
-              <button type="button" class="weight-pill ${curWeight === '2kg' ? 'active' : ''}" data-product-id="${product.id}" data-weight="2kg">
-                2 kg <span class="grosir-tag">Grosir</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        ${renderPhoneVolumeControl(product.id, calc.weightKg)}
 
         <div class="item-meta">
           <div class="meta-left">
             <h3 class="product-title">${product.name}</h3>
             <p class="product-desc">${product.desc}</p>
-            ${variant.saving ? `<div class="wholesale-saving-badge"><i class="fas fa-tag"></i> ${variant.saving}</div>` : ""}
+            <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
+              ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
+            </div>
           </div>
           <div class="meta-right">
-            <p class="price">${formatMoney(variant.price)}</p>
-            <span class="price-unit">/ ${variant.label}</span>
+            <p class="price v-price-${product.id}">${formatMoney(calc.totalPrice)}</p>
+            <span class="price-unit v-unit-${product.id}">/ ${weightLabel}</span>
           </div>
         </div>
 
@@ -424,22 +518,10 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <div class="quantity-controls">
-            ${qtyInCart === 0 ? `
-              <button class="btn-add-variant btn-action-add" data-product-id="${product.id}" ${isOut ? "disabled" : ""}>
-                <i class="fas fa-cart-plus"></i>
-                <span>Beli</span>
-              </button>
-            ` : `
-              <button class="quantity-button minus-button" data-cart-key="${cartKey}" title="Kurangi">
-                <i class="fas fa-minus"></i>
-              </button>
-              <span class="quantity-display active" id="quantity-${cartKey}">
-                ${qtyInCart}
-              </span>
-              <button class="quantity-button plus-button" data-product-id="${product.id}" ${isOut ? "disabled" : ""} title="Tambah">
-                <i class="fas fa-plus"></i>
-              </button>
-            `}
+            <button class="btn-add-variant btn-action-add" data-product-id="${product.id}" ${isOut ? "disabled" : ""}>
+              <i class="fas fa-cart-plus"></i>
+              <span class="btn-buy-text-${product.id}">${isOut ? "Stok Kurang" : (qtyInCart > 0 ? `Beli Lagi (${qtyInCart} di keranjang)` : `Beli (${weightLabel})`)}</span>
+            </button>
           </div>
         </div>
       `;
@@ -509,12 +591,11 @@ document.addEventListener("DOMContentLoaded", () => {
     cartEntries.forEach((item) => {
       // RESINKRONISASI HARGA & TAKARAN RESMI DARI KATALOG (Anti Manipulasi Client)
       const official = products.find((p) => p.id === item.productId);
-      if (official && official.variants[item.variantKey]) {
-        const v = official.variants[item.variantKey];
-        item.price = v.price;
+      if (official) {
+        const calc = calculatePriceForWeight(official, item.weightKg);
+        item.price = calc.totalPrice;
         item.name = official.name;
-        item.weightLabel = v.label;
-        item.weightKg = v.weightKg;
+        item.weightLabel = formatWeightLabel(calc.weightKg);
       }
 
       const itemTotal = item.count * item.price;
@@ -576,36 +657,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* TAMBAH BARANG KE KERANJANG BERDASARKAN TAKARAN */
-  function addToCart(productId, weightKey = null) {
+  function addToCart(productId, customWeight = null) {
     const product = products.find((item) => item.id == productId);
     if (!product) return;
 
-    const chosenWeight = weightKey || selectedWeight[productId] || "1kg";
-    const variant = product.variants[chosenWeight];
-    if (!variant) return;
+    const chosenWeight = customWeight !== null ? Number(customWeight) : (selectedWeightKg[productId] || 1.0);
+    const calc = calculatePriceForWeight(product, chosenWeight);
 
     const remainingKg = getRemainingStockKg(product);
-    if (remainingKg < variant.weightKg) {
-      showToast(`⚠️ Stok ${product.name} tidak mencukupi untuk takaran ${variant.label} (tersisa ${remainingKg} kg).`);
+    if (remainingKg < calc.weightKg) {
+      showToast(`⚠️ Stok ${product.name} tidak mencukupi untuk takaran ${formatWeightLabel(calc.weightKg)} (tersisa ${remainingKg} kg).`);
       return;
     }
 
-    const cartKey = `${product.id}_${chosenWeight}`;
+    const cartKey = `${product.id}_${calc.weightKg}kg`;
     if (!cart[cartKey]) {
       cart[cartKey] = {
         key: cartKey,
         productId: product.id,
-        variantKey: chosenWeight,
         name: product.name,
-        weightLabel: variant.label,
-        weightKg: variant.weightKg,
-        price: variant.price,
+        weightLabel: formatWeightLabel(calc.weightKg),
+        weightKg: calc.weightKg,
+        price: calc.totalPrice,
         count: 0
       };
     }
 
     cart[cartKey].count++;
-    cart[cartKey].price = variant.price; // Selalu sinkronkan harga resmi
+    cart[cartKey].price = calc.totalPrice; // Selalu sinkronkan harga resmi
     renderCart();
   }
 
@@ -814,7 +893,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
 
   document.addEventListener("click", (event) => {
-    const target = event.target.closest("button, .cart-summary, .perk-coupon, .filter-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .weight-pill");
+    const target = event.target.closest("button, .cart-summary, .perk-coupon, .filter-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip, .volume-step-btn");
     if (!target) return;
 
     // Navigasi Tabs Navbar
@@ -831,24 +910,49 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Klik tombol pilihan takaran timbangan (500 gr, 1 kg, 2 kg)
-    if (target.classList.contains("weight-pill")) {
-      const pId = Number(target.dataset.productId);
-      const w = target.dataset.weight;
-      if (pId && w) {
-        selectedWeight[pId] = w;
-        renderProducts();
-        renderHomeFeatured();
+    // Step minus slider model volume HP (-0.25 kg / 250 gr)
+    if (target.classList.contains("volume-minus") || target.closest(".volume-minus")) {
+      const btn = target.classList.contains("volume-minus") ? target : target.closest(".volume-minus");
+      const pId = Number(btn.dataset.productId);
+      if (pId) {
+        const cur = selectedWeightKg[pId] || 1.0;
+        const next = Math.max(0.25, Math.round((cur - 0.25) * 4) / 4);
+        updateCardVolumeUI(pId, next);
       }
       return;
     }
 
-    // Klik tombol "Pesan" di featured fruits Beranda
-    if (target.classList.contains("btn-buy-featured")) {
-      const pId = Number(target.dataset.productId || target.dataset.id);
-      addToCart(pId);
-      navigateTo("shop", "cart");
-      showToast("🍎 Buah ditambahkan ke keranjang!");
+    // Step plus slider model volume HP (+0.25 kg / 250 gr)
+    if (target.classList.contains("volume-plus") || target.closest(".volume-plus")) {
+      const btn = target.classList.contains("volume-plus") ? target : target.closest(".volume-plus");
+      const pId = Number(btn.dataset.productId);
+      if (pId) {
+        const cur = selectedWeightKg[pId] || 1.0;
+        const next = Math.min(5.0, Math.round((cur + 0.25) * 4) / 4);
+        updateCardVolumeUI(pId, next);
+      }
+      return;
+    }
+
+    // Klik preset chip cepat (500 gr, 1 kg, 2 kg, 3 kg)
+    if (target.classList.contains("preset-chip")) {
+      const pId = Number(target.dataset.productId);
+      const w = parseFloat(target.dataset.weight);
+      if (pId && !isNaN(w)) {
+        updateCardVolumeUI(pId, w);
+      }
+      return;
+    }
+
+    // Klik tombol "Beli" di featured fruits Beranda
+    if (target.classList.contains("btn-buy-featured") || target.closest(".btn-buy-featured")) {
+      const btn = target.classList.contains("btn-buy-featured") ? target : target.closest(".btn-buy-featured");
+      const pId = Number(btn.dataset.productId);
+      if (pId) {
+        addToCart(pId);
+        navigateTo("shop", "cart");
+        showToast("🍎 Buah ditambahkan ke keranjang!");
+      }
       return;
     }
 
@@ -868,8 +972,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Tambah di kartu produk toko (tombol Beli atau plus stepper)
-    if (target.classList.contains("plus-button") || target.classList.contains("btn-action-add")) {
-      const pId = Number(target.dataset.productId);
+    if (target.classList.contains("plus-button") || target.classList.contains("btn-action-add") || target.closest(".btn-action-add")) {
+      const btn = target.classList.contains("plus-button") || target.classList.contains("btn-action-add") ? target : target.closest(".btn-action-add");
+      const pId = Number(btn.dataset.productId);
       if (pId) {
         addToCart(pId);
       }
@@ -889,7 +994,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (target.classList.contains("cart-plus")) {
       const cartKey = target.dataset.cartKey;
       if (cartKey && cart[cartKey]) {
-        addToCart(cart[cartKey].productId, cart[cartKey].variantKey);
+        addToCart(cart[cartKey].productId, cart[cartKey].weightKg);
       }
       return;
     }
@@ -962,6 +1067,17 @@ document.addEventListener("DOMContentLoaded", () => {
       target.classList.add("active");
       const radio = target.querySelector('input[type="radio"]');
       if (radio) radio.checked = true;
+    }
+  });
+
+  /* EVENT INPUT: VOLUME SLIDER (DRAG MULUS REAL-TIME 60 FPS) */
+  document.addEventListener("input", (e) => {
+    if (e.target.classList.contains("volume-native-slider")) {
+      const pId = Number(e.target.dataset.productId);
+      const val = parseFloat(e.target.value);
+      if (pId && !isNaN(val)) {
+        updateCardVolumeUI(pId, val);
+      }
     }
   });
 
