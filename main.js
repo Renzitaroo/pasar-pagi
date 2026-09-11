@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 1,  
       name: "Apel ",       
       type: "buah",
-      category: "apel-jeruk", 
       basePricePerKg: 35000, 
       stockKg: 25, 
       produceId: "#4131", 
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: 2,  
       name: "Jeruk ",     
       type: "buah",
-      category: "apel-jeruk", 
+ 
       basePricePerKg: 30000, 
       stockKg: 20, 
       produceId: "#4012", 
@@ -523,9 +522,6 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <div class="featured-img-wrap">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
-        <span class="featured-badge ${isSayur ? 'badge-sayur' : 'badge-buah'}">
-          ${isSayur ? '🥬 ' : '🍎 '}${getCategoryName(product.category)}
-        </span>
       </div>
       <div class="featured-body">
         ${renderPhoneVolumeControl(product.id, calc.weightKg)}
@@ -539,7 +535,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
           ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
         </div>
-        <p class="featured-desc">${product.desc}</p>
         <div class="featured-footer">
           <span class="featured-stock ${isOut ? 'text-danger' : ''}">${isOut ? 'Stok Habis' : `Sisa ${remainingKg} kg`}</span>
           <button class="btn-buy-featured" data-product-id="${product.id}" ${isOut ? 'disabled' : ''}>
@@ -638,12 +633,6 @@ document.addEventListener("DOMContentLoaded", () => {
       productCard.innerHTML = `
         <div class="product-header-badge">
           <span class="produce-id">${product.produceId}</span>
-          <div class="product-tags-wrap">
-            <span class="product-dept-badge ${isSayur ? 'badge-sayur' : 'badge-buah'}">
-              ${isSayur ? '🥬 Sayur' : '🍎 Buah'}
-            </span>
-            <span class="product-category-tag">${getCategoryName(product.category)}</span>
-          </div>
         </div>
         
         <div class="product-image-container">
@@ -657,7 +646,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="item-meta">
           <div class="meta-left">
             <h3 class="product-title">${product.name}</h3>
-            <p class="product-desc">${product.desc}</p>
             <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
               ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
             </div>
@@ -686,18 +674,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function getCategoryName(cat) {
-    switch (cat) {
-      case "beri": return "Beri & Anggur";
-      case "apel-jeruk": return "Apel & Jeruk";
-      case "tropis": return "Buah Tropis";
-      case "sayur-daun": return "Sayuran Daun";
-      case "sayur-umbi": return "Sayuran Umbi";
-      case "sayur-buah": return "Sayuran Buah";
-      case "sayur-bumbu": return "Bumbu & Rempah";
-      default: return "Hasil Kebun";
-    }
-  }
 
   /* HITUNG JUMLAH BARANG DI KERANJANG */
   function updateCartCount() {
