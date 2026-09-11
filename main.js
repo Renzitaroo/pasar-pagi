@@ -5,10 +5,12 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // Katalog resmi toko. Sumber kebenaran tunggal (Single Source of Truth).
+  // Katalog resmi toko. Sumber kebenaran tunggal (Single Source of Truth).
   const products = [
     { 
       id: 1,  
-      name: "Apel Fuji",       
+      name: "Apel Fuji Manis",       
+      type: "buah",
       category: "apel-jeruk", 
       basePricePerKg: 35000, 
       stockKg: 25, 
@@ -19,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 2,  
-      name: "Jeruk Navel",     
+      name: "Jeruk Pontianak",     
+      type: "buah",
       category: "apel-jeruk", 
       basePricePerKg: 30000, 
       stockKg: 20, 
@@ -31,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { 
       id: 3,  
       name: "Pisang Cavendish",
+      type: "buah",
       category: "tropis",     
       basePricePerKg: 20000, 
       stockKg: 30, 
@@ -41,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 4,  
-      name: "Anggur Hitam",    
+      name: "Anggur Red Globe",    
+      type: "buah",
       category: "beri",       
       basePricePerKg: 55000, 
       stockKg: 15, 
@@ -53,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { 
       id: 5,  
       name: "Stroberi Ciwidey",
+      type: "buah",
       category: "beri",       
       basePricePerKg: 70000, 
       stockKg: 14, 
@@ -64,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { 
       id: 6,  
       name: "Blueberry Segar", 
+      type: "buah",
       category: "beri",       
       basePricePerKg: 95000, 
       stockKg: 10, 
@@ -74,7 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 7,  
-      name: "Nanas Madu",      
+      name: "Nanas Madu Subang",      
+      type: "buah",
       category: "tropis",     
       basePricePerKg: 28000, 
       stockKg: 20, 
@@ -85,7 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 8,  
-      name: "Mangga Arumanis", 
+      name: "Mangga Harum Manis", 
+      type: "buah",
       category: "tropis",     
       basePricePerKg: 35000, 
       stockKg: 25, 
@@ -96,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 9,  
-      name: "Kiwi Gold",       
+      name: "Kiwi Hijau Segar",       
+      type: "buah",
       category: "tropis",     
       basePricePerKg: 45000, 
       stockKg: 16, 
@@ -107,7 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 10, 
-      name: "Semangka (Potong)",
+      name: "Semangka Merah Tanpa Biji",
+      type: "buah",
       category: "tropis",    
       basePricePerKg: 22000, 
       stockKg: 20, 
@@ -115,10 +126,108 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Manis dingin kaya elektrolit untuk menghidrasi tubuh.", 
       image: "https://res.cloudinary.com/dgwef8ttm/image/upload/v1736614185/25-01-11-10-48-13-815_deco_ogtsmo.jpg",
       featured: false
+    },
+    // SAYURAN SEGAR KEBUN (ASET HARMONIS STUDIO WHITE BACKGROUND)
+    {
+      id: 11,
+      name: "Bayam Hijau Segar",
+      type: "sayur",
+      category: "sayur-daun",
+      basePricePerKg: 12000,
+      stockKg: 20,
+      produceId: "#5011",
+      desc: "Dipetik fajar hari, daun hijau renyah kaya zat besi & serat pangan.",
+      image: "/assets/sayuran/bayam_hijau.jpg",
+      featured: true
+    },
+    {
+      id: 12,
+      name: "Wortel Manis Brastagi",
+      type: "sayur",
+      category: "sayur-umbi",
+      basePricePerKg: 18000,
+      stockKg: 25,
+      produceId: "#5021",
+      desc: "Wortel renyah dataran tinggi, oranye pekat tinggi vitamin A.",
+      image: "/assets/sayuran/wortel_brastagi.jpg",
+      featured: true
+    },
+    {
+      id: 13,
+      name: "Brokoli Organik",
+      type: "sayur",
+      category: "sayur-daun",
+      basePricePerKg: 34000,
+      stockKg: 15,
+      produceId: "#5031",
+      desc: "Kuntum hijau padat bebas pestisida sintetis, superfood penuh antioksidan.",
+      image: "/assets/sayuran/brokoli_organik.jpg",
+      featured: true
+    },
+    {
+      id: 14,
+      name: "Tomat Merah Segar",
+      type: "sayur",
+      category: "sayur-buah",
+      basePricePerKg: 15000,
+      stockKg: 30,
+      produceId: "#5041",
+      desc: "Matang pohon merona, segar berair kaya likopen alami.",
+      image: "/assets/sayuran/tomat_merah.jpg",
+      featured: false
+    },
+    {
+      id: 15,
+      name: "Cabai Merah Segar",
+      type: "sayur",
+      category: "sayur-bumbu",
+      basePricePerKg: 42000,
+      stockKg: 15,
+      produceId: "#5051",
+      desc: "Pedas mantap dari petani lokal, wangi segar untuk masakan harian.",
+      image: "/assets/sayuran/cabai_rawit.jpg",
+      featured: false
+    },
+    {
+      id: 16,
+      name: "Jagung Manis Madu",
+      type: "sayur",
+      category: "sayur-buah",
+      basePricePerKg: 14000,
+      stockKg: 25,
+      produceId: "#5061",
+      desc: "Bulir kuning keemasan super manis, renyah legit cocok untuk rebus/bakar.",
+      image: "/assets/sayuran/jagung_manis.jpg",
+      featured: true
+    },
+    {
+      id: 17,
+      name: "Kentang Granola Dieng",
+      type: "sayur",
+      category: "sayur-umbi",
+      basePricePerKg: 22000,
+      stockKg: 20,
+      produceId: "#5071",
+      desc: "Umbi padat kuning pulen khas Dieng, sempurna untuk sup & perkedel.",
+      image: "/assets/sayuran/kentang_granola.jpg",
+      featured: false
+    },
+    {
+      id: 18,
+      name: "Sawi & Sayur Hijau",
+      type: "sayur",
+      category: "sayur-daun",
+      basePricePerKg: 11000,
+      stockKg: 20,
+      produceId: "#5081",
+      desc: "Batang renyah berair dan daun hijau segar, pas untuk tumisan nikmat.",
+      image: "/assets/sayuran/kangkung_air.jpg",
+      featured: false
     }
   ];
 
   let cart = {};
+  let currentDepartment = "all"; // "all" | "buah" | "sayur"
   let currentCategory = "all";
   let searchQuery = "";
   let currentPage = "home"; // "home" atau "shop"
@@ -313,6 +422,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const productSection = document.getElementById("product-section");
   const homeFeaturedGrid = document.getElementById("home-featured-grid");
+  const homeFeaturedSayurGrid = document.getElementById("home-featured-sayur-grid");
+  const categoryFiltersEl = document.getElementById("category-filters");
+  const catalogHeadingTitle = document.getElementById("catalog-heading-title");
   const cartDetailsEl = document.getElementById("cart-details");
   const cartSummaryEl = document.getElementById("cart-summary-breakdown");
   const cartCountEl = document.getElementById("cart-count");
@@ -399,50 +511,115 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  /* RENDER FEATURED FRUITS DI HALAMAN BERANDA */
+  /* BUILD KARTU UNTUK FEATURED DI BERANDA (BUAH & SAYUR) */
+  function createFeaturedCard(product) {
+    const curWeight = selectedWeightKg[product.id] || 1.0;
+    const calc = calculatePriceForWeight(product, curWeight);
+    const remainingKg = getRemainingStockKg(product);
+    const isOut = remainingKg < calc.weightKg;
+    const weightLabel = formatWeightLabel(calc.weightKg);
+    const cartKey = `${product.id}_${calc.weightKg}kg`;
+    const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+    const isSayur = product.type === "sayur";
+
+    const card = document.createElement("article");
+    card.className = `featured-fruit-card ${isSayur ? 'featured-sayur-card' : ''}`;
+    card.innerHTML = `
+      <div class="featured-img-wrap">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <span class="featured-badge ${isSayur ? 'badge-sayur' : 'badge-buah'}">
+          ${isSayur ? '🥬 ' : '🍎 '}${getCategoryName(product.category)}
+        </span>
+      </div>
+      <div class="featured-body">
+        ${renderPhoneVolumeControl(product.id, calc.weightKg)}
+        <div class="featured-meta">
+          <h4 class="featured-title">${product.name}</h4>
+          <div class="featured-price-wrap">
+            <span class="featured-price v-price-${product.id}">${formatMoney(calc.totalPrice)}</span>
+            <span class="featured-unit v-unit-${product.id}">/ ${weightLabel}</span>
+          </div>
+        </div>
+        <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
+          ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
+        </div>
+        <p class="featured-desc">${product.desc}</p>
+        <div class="featured-footer">
+          <span class="featured-stock ${isOut ? 'text-danger' : ''}">${isOut ? 'Stok Habis' : `Sisa ${remainingKg} kg`}</span>
+          <button class="btn-buy-featured" data-product-id="${product.id}" ${isOut ? 'disabled' : ''}>
+            <i class="fas fa-cart-plus"></i>
+            <span class="btn-buy-text-${product.id}">${isOut ? 'Stok Kurang' : (qtyInCart > 0 ? `Beli Lagi (${qtyInCart} di keranjang)` : `Beli (${weightLabel})`)}</span>
+          </button>
+        </div>
+      </div>
+    `;
+    return card;
+  }
+
+  /* RENDER FEATURED FRUITS & SAYURAN DI HALAMAN BERANDA */
   function renderHomeFeatured() {
-    homeFeaturedGrid.innerHTML = "";
-    const featuredItems = products.filter(p => p.featured);
+    if (homeFeaturedGrid) {
+      homeFeaturedGrid.innerHTML = "";
+      const featuredFruits = products.filter(p => p.featured && p.type === "buah");
+      featuredFruits.forEach(product => {
+        homeFeaturedGrid.appendChild(createFeaturedCard(product));
+      });
+    }
 
-    featuredItems.forEach(product => {
-      const curWeight = selectedWeightKg[product.id] || 1.0;
-      const calc = calculatePriceForWeight(product, curWeight);
-      const remainingKg = getRemainingStockKg(product);
-      const isOut = remainingKg < calc.weightKg;
-      const weightLabel = formatWeightLabel(calc.weightKg);
-      const cartKey = `${product.id}_${calc.weightKg}kg`;
-      const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+    if (homeFeaturedSayurGrid) {
+      homeFeaturedSayurGrid.innerHTML = "";
+      const featuredSayur = products.filter(p => p.featured && p.type === "sayur");
+      featuredSayur.forEach(product => {
+        homeFeaturedSayurGrid.appendChild(createFeaturedCard(product));
+      });
+    }
+  }
 
-      const card = document.createElement("article");
-      card.className = "featured-fruit-card";
-      card.innerHTML = `
-        <div class="featured-img-wrap">
-          <img src="${product.image}" alt="${product.name}" loading="lazy">
-          <span class="featured-badge">${getCategoryName(product.category)}</span>
-        </div>
-        <div class="featured-body">
-          ${renderPhoneVolumeControl(product.id, calc.weightKg)}
-          <div class="featured-meta">
-            <h4 class="featured-title">${product.name}</h4>
-            <div class="featured-price-wrap">
-              <span class="featured-price v-price-${product.id}">${formatMoney(calc.totalPrice)}</span>
-              <span class="featured-unit v-unit-${product.id}">/ ${weightLabel}</span>
-            </div>
-          </div>
-          <div class="wholesale-saving-badge v-saving-${product.id} ${!calc.savingLabel ? 'empty' : ''}">
-            ${calc.savingLabel ? `<i class="fas fa-tag"></i> ${calc.savingLabel}` : ""}
-          </div>
-          <p class="featured-desc">${product.desc}</p>
-          <div class="featured-footer">
-            <span class="featured-stock ${isOut ? 'text-danger' : ''}">${isOut ? 'Stok Habis' : `Sisa ${remainingKg} kg`}</span>
-            <button class="btn-buy-featured" data-product-id="${product.id}" ${isOut ? 'disabled' : ''}>
-              <i class="fas fa-cart-plus"></i>
-              <span class="btn-buy-text-${product.id}">${isOut ? 'Stok Kurang' : (qtyInCart > 0 ? `Beli Lagi (${qtyInCart} di keranjang)` : `Beli (${weightLabel})`)}</span>
-            </button>
-          </div>
-        </div>
-      `;
-      homeFeaturedGrid.appendChild(card);
+  /* RENDER TOMBOL FILTER KATEGORI DINAMIS SESUAI DEPARTEMEN AKTIF */
+  function renderCategoryPills() {
+    if (!categoryFiltersEl) return;
+    categoryFiltersEl.innerHTML = "";
+
+    let categories = [];
+    if (currentDepartment === "buah") {
+      categories = [
+        { id: "all", label: "Semua Buah" },
+        { id: "apel-jeruk", label: "🍎 Apel & Jeruk" },
+        { id: "tropis", label: "🍌 Buah Tropis" },
+        { id: "beri", label: "🍇 Beri & Anggur" }
+      ];
+    } else if (currentDepartment === "sayur") {
+      categories = [
+        { id: "all", label: "Semua Sayuran" },
+        { id: "sayur-daun", label: "🥬 Sayur Daun" },
+        { id: "sayur-umbi", label: "🥕 Sayur Umbi" },
+        { id: "sayur-buah", label: "🍅 Sayur Buah" },
+        { id: "sayur-bumbu", label: "🌶️ Bumbu & Rempah" }
+      ];
+    } else {
+      categories = [
+        { id: "all", label: "Semua Kategori" },
+        { id: "apel-jeruk", label: "🍎 Apel & Jeruk" },
+        { id: "tropis", label: "🍌 Buah Tropis" },
+        { id: "beri", label: "🍇 Beri & Anggur" },
+        { id: "sayur-daun", label: "🥬 Sayur Daun" },
+        { id: "sayur-umbi", label: "🥕 Sayur Umbi" },
+        { id: "sayur-buah", label: "🍅 Sayur Buah" },
+        { id: "sayur-bumbu", label: "🌶️ Bumbu & Rempah" }
+      ];
+    }
+
+    // Kembalikan ke 'all' jika kategori terpilih sebelumnya tidak valid di departemen saat ini
+    if (!categories.some(c => c.id === currentCategory)) {
+      currentCategory = "all";
+    }
+
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = `filter-pill ${currentCategory === cat.id ? "active" : ""}`;
+      btn.dataset.category = cat.id;
+      btn.textContent = cat.label;
+      categoryFiltersEl.appendChild(btn);
     });
   }
 
@@ -451,18 +628,44 @@ document.addEventListener("DOMContentLoaded", () => {
     productSection.innerHTML = "";
 
     const filtered = products.filter((product) => {
+      const matchDepartment = (currentDepartment === "all") || (product.type === currentDepartment);
       const matchCategory = (currentCategory === "all") || (product.category === currentCategory);
       const matchSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.produceId.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCategory && matchSearch;
+      return matchDepartment && matchCategory && matchSearch;
     });
 
-    productCountBadge.textContent = `${filtered.length} buah tersedia`;
+    const countBuah = filtered.filter(p => p.type === "buah").length;
+    const countSayur = filtered.filter(p => p.type === "sayur").length;
+
+    if (catalogHeadingTitle) {
+      if (currentDepartment === "buah") {
+        catalogHeadingTitle.textContent = "Koleksi Buah Segar";
+      } else if (currentDepartment === "sayur") {
+        catalogHeadingTitle.textContent = "Koleksi Sayuran Kebun";
+      } else {
+        catalogHeadingTitle.textContent = "Koleksi Buah & Sayuran";
+      }
+    }
+
+    if (currentDepartment === "buah") {
+      productCountBadge.textContent = `${countBuah} buah tersedia`;
+    } else if (currentDepartment === "sayur") {
+      productCountBadge.textContent = `${countSayur} sayuran tersedia`;
+    } else {
+      productCountBadge.textContent = `${countBuah} buah & ${countSayur} sayuran (${filtered.length} total)`;
+    }
 
     if (filtered.length === 0) {
       noProductsMsg.style.display = "block";
       productSection.style.display = "none";
+      const noProdHeading = noProductsMsg.querySelector("h4");
+      if (noProdHeading) {
+        noProdHeading.textContent = currentDepartment === "sayur" 
+          ? "Sayuran yang kamu cari tidak ditemukan" 
+          : "Produk yang kamu cari tidak ditemukan";
+      }
       return;
     } else {
       noProductsMsg.style.display = "none";
@@ -478,15 +681,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const weightLabel = formatWeightLabel(calc.weightKg);
       const cartKey = `${product.id}_${calc.weightKg}kg`;
       const qtyInCart = cart[cartKey] ? cart[cartKey].count : 0;
+      const isSayur = product.type === "sayur";
 
       const productCard = document.createElement("article");
       productCard.classList.add("product");
+      if (isSayur) productCard.classList.add("product-sayur");
       if (isOut && remainingKg <= 0) productCard.classList.add("sold-out");
 
       productCard.innerHTML = `
         <div class="product-header-badge">
           <span class="produce-id">${product.produceId}</span>
-          <span class="product-category-tag">${getCategoryName(product.category)}</span>
+          <div class="product-tags-wrap">
+            <span class="product-dept-badge ${isSayur ? 'badge-sayur' : 'badge-buah'}">
+              ${isSayur ? '🥬 Sayur' : '🍎 Buah'}
+            </span>
+            <span class="product-category-tag">${getCategoryName(product.category)}</span>
+          </div>
         </div>
         
         <div class="product-image-container">
@@ -533,8 +743,12 @@ document.addEventListener("DOMContentLoaded", () => {
     switch (cat) {
       case "beri": return "Beri & Anggur";
       case "apel-jeruk": return "Apel & Jeruk";
-      case "tropis": return "Tropis";
-      default: return "Buah Segar";
+      case "tropis": return "Buah Tropis";
+      case "sayur-daun": return "Sayuran Daun";
+      case "sayur-umbi": return "Sayuran Umbi";
+      case "sayur-buah": return "Sayuran Buah";
+      case "sayur-bumbu": return "Bumbu & Rempah";
+      default: return "Hasil Kebun";
     }
   }
 
@@ -578,7 +792,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="empty-cart-state">
           <i class="fas fa-shopping-basket empty-cart-icon"></i>
           <p class="empty-cart-title">Keranjangmu masih kosong</p>
-          <p class="empty-cart-sub">Pilih buah segar favoritmu dari kebun untuk mulai berbelanja.</p>
+          <p class="empty-cart-sub">Pilih buah manis & sayuran segar favoritmu dari kebun untuk mulai berbelanja.</p>
         </div>
       `;
       renderBreakdownRows(cartSummaryEl, buildBreakdown(0));
@@ -603,6 +817,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const remainingKg = getRemainingStockKg(official);
       const canAddMore = remainingKg >= item.weightKg;
+      const deptIcon = official && official.type === "sayur" ? "🥬" : "🍎";
 
       const listItem = document.createElement("div");
       listItem.classList.add("cart-item");
@@ -610,6 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="cart-item-top">
           <div class="cart-item-info">
             <div class="cart-item-name">
+              <span class="cart-dept-icon">${deptIcon}</span>
               ${item.name}
               <span class="cart-item-weight-badge">${item.weightLabel}</span>
             </div>
@@ -893,7 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
 
   document.addEventListener("click", (event) => {
-    const target = event.target.closest("button, .cart-summary, .perk-coupon, .filter-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip, .volume-step-btn");
+    const target = event.target.closest("button, .cart-summary, .floating-cart-widget, .perk-coupon, .filter-pill, .dept-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip, .volume-step-btn");
     if (!target) return;
 
     // Navigasi Tabs Navbar
@@ -901,12 +1117,49 @@ document.addEventListener("DOMContentLoaded", () => {
       navigateTo("home");
       return;
     }
-    if (target.id === "nav-shop" || target.id === "btn-goto-shop" || target.id === "btn-view-all-fruits") {
+    if (target.id === "nav-shop" || target.id === "btn-goto-shop") {
+      currentDepartment = "all";
+      currentCategory = "all";
+      document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "all"));
+      renderCategoryPills();
       navigateTo("shop");
+      renderProducts();
+      return;
+    }
+    if (target.id === "btn-view-all-fruits") {
+      currentDepartment = "buah";
+      currentCategory = "all";
+      document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "buah"));
+      renderCategoryPills();
+      navigateTo("shop");
+      renderProducts();
+      return;
+    }
+    if (target.id === "btn-view-all-sayur") {
+      currentDepartment = "sayur";
+      currentCategory = "all";
+      document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "sayur"));
+      renderCategoryPills();
+      navigateTo("shop");
+      renderProducts();
       return;
     }
     if (target.id === "btn-shop-back-home") {
       navigateTo("home");
+      return;
+    }
+
+    // Klik Filter Departemen (Semua, Buah Segar, Sayuran Kebun)
+    if (target.classList.contains("dept-pill") || target.closest(".dept-pill")) {
+      const btn = target.classList.contains("dept-pill") ? target : target.closest(".dept-pill");
+      const dept = btn.dataset.dept;
+      if (dept) {
+        currentDepartment = dept;
+        currentCategory = "all";
+        document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === dept));
+        renderCategoryPills();
+        renderProducts();
+      }
       return;
     }
 
@@ -944,14 +1197,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Klik tombol "Beli" di featured fruits Beranda
+    // Klik tombol "Beli" di featured fruits/sayuran Beranda
     if (target.classList.contains("btn-buy-featured") || target.closest(".btn-buy-featured")) {
       const btn = target.classList.contains("btn-buy-featured") ? target : target.closest(".btn-buy-featured");
       const pId = Number(btn.dataset.productId);
       if (pId) {
+        const p = products.find(prod => prod.id === pId);
         addToCart(pId);
         navigateTo("shop", "cart");
-        showToast("🍎 Buah ditambahkan ke keranjang!");
+        showToast(`${p && p.type === 'sayur' ? '🥬 Sayuran' : '🍎 Buah'} ditambahkan ke keranjang!`);
       }
       return;
     }
@@ -965,8 +1219,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Header Cart Pill -> buka toko & scroll ke keranjang
-    if (target.id === "header-cart-summary" || target.id === "mobile-cart-btn") {
+    // Floating Cart Widget (Pojok Kanan Bawah) / Mobile Cart Bar -> buka toko & scroll ke keranjang
+    if (target.id === "header-cart-summary" || target.closest("#header-cart-summary") || target.id === "mobile-cart-btn") {
       navigateTo("shop", "cart");
       return;
     }
@@ -1019,22 +1273,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // Kupon tombol di toko
     if (target.id === "apply-coupon") {
       applyCoupon();
+      return;
     }
     // Checkout tombol
     if (target.id === "checkout-button") {
       openReview();
+      return;
     }
     // Konfirmasi pesanan
     if (target.id === "review-confirm") {
       placeOrder();
+      return;
     }
     // Kembali atau tutup review modal
     if (target.id === "review-back" || target.id === "modal-close-btn" || target === reviewModal) {
       closeReview();
+      return;
     }
     // Tutup success modal
     if (target.id === "success-close-btn" || target === successModal) {
       closeSuccessModal();
+      return;
     }
     // Filter Kategori
     if (target.classList.contains("filter-pill")) {
@@ -1042,6 +1301,7 @@ document.addEventListener("DOMContentLoaded", () => {
       target.classList.add("active");
       currentCategory = target.dataset.category;
       renderProducts();
+      return;
     }
     // Clear search
     if (target.id === "clear-search") {
@@ -1049,17 +1309,21 @@ document.addEventListener("DOMContentLoaded", () => {
       searchQuery = "";
       clearSearchBtn.style.display = "none";
       renderProducts();
+      return;
     }
     // Reset filter
     if (target.id === "reset-filter-btn") {
       searchInput.value = "";
       searchQuery = "";
       clearSearchBtn.style.display = "none";
+      currentDepartment = "all";
       currentCategory = "all";
-      document.querySelectorAll(".filter-pill").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.category === "all");
+      document.querySelectorAll(".dept-pill").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.dept === "all");
       });
+      renderCategoryPills();
       renderProducts();
+      return;
     }
     // Opsi Pembayaran di Modal
     if (target.classList.contains("payment-option")) {
@@ -1067,6 +1331,7 @@ document.addEventListener("DOMContentLoaded", () => {
       target.classList.add("active");
       const radio = target.querySelector('input[type="radio"]');
       if (radio) radio.checked = true;
+      return;
     }
   });
 
@@ -1136,6 +1401,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navigateTo("home");
   }
 
+  renderCategoryPills();
   renderHomeFeatured();
   renderProducts();
   renderCart();
