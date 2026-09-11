@@ -228,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let cart = {};
   let currentDepartment = "all"; // "all" | "buah" | "sayur"
-  let currentCategory = "all";
   let searchQuery = "";
   let currentPage = "home"; // "home" atau "shop"
 
@@ -423,12 +422,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const productSection = document.getElementById("product-section");
   const homeFeaturedGrid = document.getElementById("home-featured-grid");
   const homeFeaturedSayurGrid = document.getElementById("home-featured-sayur-grid");
-  const categoryFiltersEl = document.getElementById("category-filters");
   const catalogHeadingTitle = document.getElementById("catalog-heading-title");
   const cartDetailsEl = document.getElementById("cart-details");
   const cartSummaryEl = document.getElementById("cart-summary-breakdown");
-  const cartCountEl = document.getElementById("cart-count");
-  const headerCartTotalEl = document.getElementById("header-cart-total");
   const sidebarCartBadgeEl = document.getElementById("sidebar-cart-badge");
   const checkoutBtn = document.getElementById("checkout-button");
   const reviewModal = document.getElementById("review-modal");
@@ -575,65 +571,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* RENDER TOMBOL FILTER KATEGORI DINAMIS SESUAI DEPARTEMEN AKTIF */
-  function renderCategoryPills() {
-    if (!categoryFiltersEl) return;
-    categoryFiltersEl.innerHTML = "";
-
-    let categories = [];
-    if (currentDepartment === "buah") {
-      categories = [
-        { id: "all", label: "Semua Buah" },
-        { id: "apel-jeruk", label: "🍎 Apel & Jeruk" },
-        { id: "tropis", label: "🍌 Buah Tropis" },
-        { id: "beri", label: "🍇 Beri & Anggur" }
-      ];
-    } else if (currentDepartment === "sayur") {
-      categories = [
-        { id: "all", label: "Semua Sayuran" },
-        { id: "sayur-daun", label: "🥬 Sayur Daun" },
-        { id: "sayur-umbi", label: "🥕 Sayur Umbi" },
-        { id: "sayur-buah", label: "🍅 Sayur Buah" },
-        { id: "sayur-bumbu", label: "🌶️ Bumbu & Rempah" }
-      ];
-    } else {
-      categories = [
-        { id: "all", label: "Semua Kategori" },
-        { id: "apel-jeruk", label: "🍎 Apel & Jeruk" },
-        { id: "tropis", label: "🍌 Buah Tropis" },
-        { id: "beri", label: "🍇 Beri & Anggur" },
-        { id: "sayur-daun", label: "🥬 Sayur Daun" },
-        { id: "sayur-umbi", label: "🥕 Sayur Umbi" },
-        { id: "sayur-buah", label: "🍅 Sayur Buah" },
-        { id: "sayur-bumbu", label: "🌶️ Bumbu & Rempah" }
-      ];
-    }
-
-    // Kembalikan ke 'all' jika kategori terpilih sebelumnya tidak valid di departemen saat ini
-    if (!categories.some(c => c.id === currentCategory)) {
-      currentCategory = "all";
-    }
-
-    categories.forEach(cat => {
-      const btn = document.createElement("button");
-      btn.className = `filter-pill ${currentCategory === cat.id ? "active" : ""}`;
-      btn.dataset.category = cat.id;
-      btn.textContent = cat.label;
-      categoryFiltersEl.appendChild(btn);
-    });
-  }
-
   /* RENDER PRODUK DI HALAMAN TOKO */
   function renderProducts() {
     productSection.innerHTML = "";
 
     const filtered = products.filter((product) => {
       const matchDepartment = (currentDepartment === "all") || (product.type === currentDepartment);
-      const matchCategory = (currentCategory === "all") || (product.category === currentCategory);
       const matchSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           product.produceId.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchDepartment && matchCategory && matchSearch;
+      return matchDepartment && matchSearch;
     });
 
     const countBuah = filtered.filter(p => p.type === "buah").length;
@@ -1109,7 +1056,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ============================================================ */
 
   document.addEventListener("click", (event) => {
-    const target = event.target.closest("button, .cart-summary, .floating-cart-widget, .perk-coupon, .filter-pill, .dept-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip, .volume-step-btn");
+    const target = event.target.closest("button, .perk-coupon, .dept-pill, .payment-option, .modal-overlay, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip, .volume-step-btn");
     if (!target) return;
 
     // Navigasi Tabs Navbar
@@ -1119,27 +1066,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (target.id === "nav-shop" || target.id === "btn-goto-shop") {
       currentDepartment = "all";
-      currentCategory = "all";
       document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "all"));
-      renderCategoryPills();
       navigateTo("shop");
       renderProducts();
       return;
     }
     if (target.id === "btn-view-all-fruits") {
       currentDepartment = "buah";
-      currentCategory = "all";
       document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "buah"));
-      renderCategoryPills();
       navigateTo("shop");
       renderProducts();
       return;
     }
     if (target.id === "btn-view-all-sayur") {
       currentDepartment = "sayur";
-      currentCategory = "all";
       document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "sayur"));
-      renderCategoryPills();
       navigateTo("shop");
       renderProducts();
       return;
@@ -1155,9 +1096,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dept = btn.dataset.dept;
       if (dept) {
         currentDepartment = dept;
-        currentCategory = "all";
         document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === dept));
-        renderCategoryPills();
         renderProducts();
       }
       return;
@@ -1219,8 +1158,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Floating Cart Widget (Pojok Kanan Bawah) / Mobile Cart Bar -> buka toko & scroll ke keranjang
-    if (target.id === "header-cart-summary" || target.closest("#header-cart-summary") || target.id === "mobile-cart-btn") {
+    // Mobile Cart Bar -> buka toko & scroll ke keranjang
+    if (target.id === "mobile-cart-btn") {
       navigateTo("shop", "cart");
       return;
     }
@@ -1295,14 +1234,6 @@ document.addEventListener("DOMContentLoaded", () => {
       closeSuccessModal();
       return;
     }
-    // Filter Kategori
-    if (target.classList.contains("filter-pill")) {
-      document.querySelectorAll(".filter-pill").forEach(btn => btn.classList.remove("active"));
-      target.classList.add("active");
-      currentCategory = target.dataset.category;
-      renderProducts();
-      return;
-    }
     // Clear search
     if (target.id === "clear-search") {
       searchInput.value = "";
@@ -1317,11 +1248,9 @@ document.addEventListener("DOMContentLoaded", () => {
       searchQuery = "";
       clearSearchBtn.style.display = "none";
       currentDepartment = "all";
-      currentCategory = "all";
       document.querySelectorAll(".dept-pill").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.dept === "all");
       });
-      renderCategoryPills();
       renderProducts();
       return;
     }
@@ -1401,7 +1330,6 @@ document.addEventListener("DOMContentLoaded", () => {
     navigateTo("home");
   }
 
-  renderCategoryPills();
   renderHomeFeatured();
   renderProducts();
   renderCart();
