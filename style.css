@@ -2284,118 +2284,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* FLOATING CART WIDGET (POJOK KANAN BAWAH) */
-.floating-cart-widget {
-  position: fixed;
-  bottom: 2.2rem;
-  right: 2.5rem;
-  z-index: 1000;
-  cursor: pointer;
-  user-select: none;
-  animation: floatIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes floatIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.92); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.floating-cart-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 0.65rem 1.15rem 0.65rem 0.75rem;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid var(--olive);
-  border-radius: 999px;
-  box-shadow: 0 14px 38px rgba(66, 48, 32, 0.18), 0 4px 12px rgba(79, 99, 63, 0.12);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.floating-cart-widget:hover .floating-cart-pill {
-  background: #ffffff;
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 48px rgba(79, 99, 63, 0.28), 0 6px 16px rgba(66, 48, 32, 0.14);
-  border-color: var(--olive-hover);
-}
-
-.floating-cart-icon-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--olive);
-  color: #ffffff;
-  font-size: 1.15rem;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(79, 99, 63, 0.35);
-}
-
-.floating-cart-count {
-  position: absolute;
-  top: -4px;
-  right: -5px;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 5px;
-  border-radius: 999px;
-  background: var(--orange);
-  color: #ffffff;
-  font-size: 0.74rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.floating-cart-info {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.floating-cart-label {
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--brown-sub);
-}
-
-.floating-cart-total {
-  font-weight: 800;
-  font-size: 1.05rem;
-  color: var(--brown);
-  font-family: var(--font-sans);
-}
-
-.floating-cart-action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--olive-soft);
-  color: var(--olive);
-  font-size: 0.85rem;
-  margin-left: 0.35rem;
-  transition: all 0.25s ease;
-}
-
-.floating-cart-widget:hover .floating-cart-action {
-  background: var(--olive);
-  color: #ffffff;
-  transform: translateX(3px);
-}
-
 /* RESPONSIVE DESIGN */
 @media (max-width: 1040px) {
   body { padding: 1.5rem; }
@@ -2421,10 +2309,6 @@ body {
   }
   .cart-summary {
     display: none;
-  }
-  .floating-cart-widget {
-    bottom: 5.5rem;
-    right: 1.2rem;
   }
   .department-filter-bar {
     width: 100%;

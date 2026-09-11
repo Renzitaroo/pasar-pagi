@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = [
     { 
       id: 1,  
-      name: "Apel Fuji Manis",       
+      name: "Apel ",       
       type: "buah",
       category: "apel-jeruk", 
       basePricePerKg: 35000, 
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 2,  
-      name: "Jeruk Pontianak",     
+      name: "Jeruk ",     
       type: "buah",
       category: "apel-jeruk", 
       basePricePerKg: 30000, 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 3,  
-      name: "Pisang Cavendish",
+      name: "Pisang ",
       type: "buah",
       category: "tropis",     
       basePricePerKg: 20000, 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 4,  
-      name: "Anggur Red Globe",    
+      name: "Anggur ",    
       type: "buah",
       category: "beri",       
       basePricePerKg: 55000, 
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 5,  
-      name: "Stroberi Ciwidey",
+      name: "Stroberi ",
       type: "buah",
       category: "beri",       
       basePricePerKg: 70000, 
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 6,  
-      name: "Blueberry Segar", 
+      name: "Blueberry ", 
       type: "buah",
       category: "beri",       
       basePricePerKg: 95000, 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 7,  
-      name: "Nanas Madu Subang",      
+      name: "Nanas ",      
       type: "buah",
       category: "tropis",     
       basePricePerKg: 28000, 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 8,  
-      name: "Mangga Harum Manis", 
+      name: "Mangga ", 
       type: "buah",
       category: "tropis",     
       basePricePerKg: 35000, 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 9,  
-      name: "Kiwi Hijau Segar",       
+      name: "Kiwi ",       
       type: "buah",
       category: "tropis",     
       basePricePerKg: 45000, 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     { 
       id: 10, 
-      name: "Semangka Merah Tanpa Biji",
+      name: "Semangka ",
       type: "buah",
       category: "tropis",    
       basePricePerKg: 22000, 
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // SAYURAN SEGAR KEBUN (ASET HARMONIS STUDIO WHITE BACKGROUND)
     {
       id: 11,
-      name: "Bayam Hijau Segar",
+      name: "Bayam ",
       type: "sayur",
       category: "sayur-daun",
       basePricePerKg: 12000,
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 12,
-      name: "Wortel Manis Brastagi",
+      name: "Wortel ",
       type: "sayur",
       category: "sayur-umbi",
       basePricePerKg: 18000,
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 13,
-      name: "Brokoli Organik",
+      name: "Brokoli ",
       type: "sayur",
       category: "sayur-daun",
       basePricePerKg: 34000,
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 14,
-      name: "Tomat Merah Segar",
+      name: "Tomat ",
       type: "sayur",
       category: "sayur-buah",
       basePricePerKg: 15000,
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 15,
-      name: "Cabai Merah Segar",
+      name: "Cabai ",
       type: "sayur",
       category: "sayur-bumbu",
       basePricePerKg: 42000,
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 16,
-      name: "Jagung Manis Madu",
+      name: "Jagung ",
       type: "sayur",
       category: "sayur-buah",
       basePricePerKg: 14000,
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 17,
-      name: "Kentang Granola Dieng",
+      name: "Kentang ",
       type: "sayur",
       category: "sayur-umbi",
       basePricePerKg: 22000,
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: 18,
-      name: "Sawi & Sayur Hijau",
+      name: "Sawi ",
       type: "sayur",
       category: "sayur-daun",
       basePricePerKg: 11000,
@@ -756,17 +756,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCartCount() {
     const totalCount = Object.values(cart).reduce((sum, item) => sum + item.count, 0);
     const totalKg = Math.round(Object.values(cart).reduce((sum, item) => sum + (item.weightKg * item.count), 0) * 10) / 10;
-    cartCountEl.textContent = totalCount;
-    sidebarCartBadgeEl.textContent = `${totalCount} item (${totalKg} kg)`;
-    mobileCartItems.textContent = `${totalCount} item (${totalKg} kg)`;
+    if (cartCountEl) cartCountEl.textContent = totalCount;
+    if (sidebarCartBadgeEl) sidebarCartBadgeEl.textContent = `${totalCount} item (${totalKg} kg)`;
+    if (mobileCartItems) mobileCartItems.textContent = `${totalCount} item (${totalKg} kg)`;
 
     let subtotal = 0;
     Object.values(cart).forEach((item) => {
       subtotal += item.count * item.price;
     });
     const breakdown = buildBreakdown(subtotal);
-    headerCartTotalEl.textContent = formatMoney(breakdown.total);
-    mobileCartTotal.textContent = formatMoney(breakdown.total);
+    if (headerCartTotalEl) headerCartTotalEl.textContent = formatMoney(breakdown.total);
+    if (mobileCartTotal) mobileCartTotal.textContent = formatMoney(breakdown.total);
 
     // Floating cart bar di mobile
     if (totalCount > 0 && currentPage === "shop") {
