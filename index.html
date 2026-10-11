@@ -3,216 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pasar Pagi — Buah Segar & Pagi yang Tenang</title>
-  <meta name="description" content="Toko buah online Pasar Pagi. Buah organik segar langsung dipetik dari kebun petani lokal setiap fajar.">
+  <title>Pasar Pagi — Belanja Buah & Sayur Segar Harian</title>
+  <meta name="description" content="Belanja buah segar dan sayuran kebun kualitas pilihan dengan harga langsung dari petani mitra.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Google Identity Services (GIS) SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <!-- HEADER & NAVIGATION -->
+  <!-- HEADER & NAVIGATION (MODERN E-COMMERCE STICKY BAR) -->
   <header class="header">
     <div class="brand" id="brand-logo" title="Kembali ke Beranda">
-      <h1 class="brand-title">Pasar Pagi</h1>
+      <div class="brand-logo-mark">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <div class="brand-logo-copy">
+        <h1 class="brand-title">Pasar Pagi</h1>
+        <span class="brand-tagline">Segar Harian</span>
+      </div>
     </div>
 
-    <!-- MAIN NAVBAR (BERANDA vs TOKO BUAH & SAYUR) -->
+    <!-- GLOBAL E-COMMERCE SEARCH BAR -->
+    <div class="header-search-bar" role="search">
+      <i class="fas fa-search header-search-icon"></i>
+      <input type="text" id="header-search-input" placeholder="Cari apel, brokoli, bayam, mangga..." autocomplete="off">
+      <button type="button" id="header-clear-search" class="header-clear-btn" style="display: none;" title="Bersihkan pencarian">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- MAIN NAVBAR -->
     <nav class="main-nav" aria-label="Navigasi Halaman">
       <button class="nav-link active" data-target="home" id="nav-home">
-        <i class="fas fa-house"></i>
+        <i class="fas fa-store"></i>
         <span>Beranda</span>
       </button>
       <button class="nav-link" data-target="shop" id="nav-shop">
-        <i class="fas fa-basket-shopping"></i>
-        <span>Toko Buah & Sayur</span>
+        <i class="fas fa-border-all"></i>
+        <span>Katalog</span>
       </button>
     </nav>
 
-    <!-- USER AUTH CONTROLS -->
-    <div class="header-auth" id="header-auth">
-      <!-- State Belum Login -->
-      <div class="auth-guest" id="auth-guest">
-        <button class="btn-google-login" id="btn-open-login" title="Masuk Akun Google">
-          <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-          </svg>
-          <span>Masuk Akun</span>
-        </button>
-      </div>
-
-      <!-- State Sudah Login -->
-      <div class="auth-user" id="auth-user" style="display: none;">
-        <button class="user-chip" id="user-chip-btn" aria-haspopup="true" aria-expanded="false">
-          <img class="user-avatar" id="user-avatar-img" src="" alt="Avatar">
-          <div class="user-chip-info">
-            <span class="user-chip-name" id="user-chip-name">Pelanggan</span>
-            <span class="user-chip-badge"><i class="fas fa-check-circle"></i> Member</span>
-          </div>
-          <i class="fas fa-chevron-down user-chip-arrow"></i>
-        </button>
-
-        <!-- Dropdown Menu -->
-        <div class="user-dropdown-menu" id="user-dropdown-menu">
-          <div class="dropdown-header">
-            <div class="dropdown-user-name" id="menu-user-name">Nama Pelanggan</div>
-            <div class="dropdown-user-email" id="menu-user-email">email@example.com</div>
-          </div>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item" id="menu-btn-profile">
-            <i class="fas fa-user-pen"></i>
-            <span>Data Diri & Alamat</span>
-          </button>
-          <button class="dropdown-item" id="menu-btn-orders">
-            <i class="fas fa-receipt"></i>
-            <span>Riwayat Pesanan</span>
-            <span class="menu-order-count" id="menu-order-badge">0</span>
-          </button>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item dropdown-logout" id="menu-btn-logout">
-            <i class="fas fa-right-from-bracket"></i>
-            <span>Keluar Akun</span>
+    <!-- USER AUTH & CART CONTROLS -->
+    <div class="header-right-group">
+      <div class="header-auth" id="header-auth">
+        <!-- State Belum Login -->
+        <div class="auth-guest" id="auth-guest">
+          <button class="btn-google-login" id="btn-open-login" title="Masuk Akun Google">
+            <svg class="google-icon" viewBox="0 0 24 24" width="18" height="18">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Masuk</span>
           </button>
         </div>
-      </div>
-    </div>
 
-    <!-- MOBILE HEADER QUICK CART BUTTON -->
-    <button class="mobile-header-cart" id="mobile-header-cart" title="Buka Keranjang Belanja" aria-label="Keranjang Belanja">
-      <i class="fas fa-bag-shopping"></i>
-      <span class="mobile-header-cart-badge" id="mobile-header-cart-badge" style="display: none;">0</span>
-    </button>
+        <!-- State Sudah Login -->
+        <div class="auth-user" id="auth-user" style="display: none;">
+          <button class="user-chip" id="user-chip-btn" aria-haspopup="true" aria-expanded="false">
+            <img class="user-avatar" id="user-avatar-img" src="" alt="Avatar">
+            <div class="user-chip-info">
+              <span class="user-chip-name" id="user-chip-name">Pelanggan</span>
+              <span class="user-chip-badge"><i class="fas fa-check-circle"></i> Member</span>
+            </div>
+            <i class="fas fa-chevron-down user-chip-arrow"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="user-dropdown-menu" id="user-dropdown-menu">
+            <div class="dropdown-header">
+              <div class="dropdown-user-name" id="menu-user-name">Nama Pelanggan</div>
+              <div class="dropdown-user-email" id="menu-user-email">email@example.com</div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" id="menu-btn-profile">
+              <i class="fas fa-user-pen"></i>
+              <span>Data Diri & Alamat</span>
+            </button>
+            <button class="dropdown-item" id="menu-btn-orders">
+              <i class="fas fa-receipt"></i>
+              <span>Riwayat Pesanan</span>
+              <span class="menu-order-count" id="menu-order-badge">0</span>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item dropdown-logout" id="menu-btn-logout">
+              <i class="fas fa-right-from-bracket"></i>
+              <span>Keluar Akun</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEADER QUICK CART BUTTON -->
+      <button class="mobile-header-cart" id="mobile-header-cart" title="Buka Keranjang Belanja" aria-label="Keranjang Belanja">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="header-cart-label">Keranjang</span>
+        <span class="mobile-header-cart-badge" id="mobile-header-cart-badge" style="display: none;">0</span>
+      </button>
+    </div>
   </header>
 
   <!-- ============================================================
-       HALAMAN 1: WELCOME TO PASAR PAGI (BERANDA / LANDING PAGE)
+       HALAMAN 1: STOREFRONT UTAMA (E-COMMERCE DASHBOARD)
        ============================================================ -->
   <div id="page-home" class="page-view active">
-    <!-- HERO SECTION -->
-    <section class="welcome-hero">
-      <div class="welcome-content">
-        <h2 class="welcome-title">Sayur & Buah Segar Petikan Subuh</h2>
+    <!-- ROW 1: COMPACT COMMERCIAL PROMO BENTO + VOUCHER CARD -->
+    <section class="ecom-bento-top" aria-label="Promo Utama dan Voucher">
+      <div class="ecom-main-banner">
+        <div class="ecom-banner-copy">
+          <span class="ecom-banner-pill">Panen Pagi • Pengiriman Instan</span>
+          <h2 class="ecom-banner-title">Sayur & Buah Segar Langsung dari Kebun</h2>
+          <p class="ecom-banner-desc">
+            Harga petani tanpa perantara. Beli takaran 2 kg otomatis hemat 10%, beli 3 kg hemat 20%.
+          </p>
+          <div class="ecom-banner-actions">
+            <button type="button" class="btn-ecom-cta" id="btn-goto-shop">
+              <span>Lihat Semua Katalog</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ecom-banner-visual">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Koleksi Buah dan Sayur Segar" loading="eager">
+        </div>
+      </div>
 
-        <div class="welcome-cta-group">
-          <button class="btn-hero-primary" id="btn-goto-shop">
-            <span>Mulai Belanja Sekarang</span>
-            <i class="fas fa-arrow-right"></i>
-          </button>
+      <div class="ecom-voucher-box">
+        <div class="voucher-top-row">
+          <span class="voucher-tag"><i class="fas fa-ticket-simple"></i> Voucher Pelanggan</span>
+          <span class="voucher-off">Hemat 20%</span>
+        </div>
+        <h3 class="voucher-title">Diskon 20% Semua Produk</h3>
+        <p class="voucher-desc">Gunakan kode promo di bawah untuk potongan langsung di keranjang belanja.</p>
+        <div class="voucher-ticket-bar">
+          <div class="voucher-code-wrap">
+            <span class="voucher-code-label">KODE PROMO</span>
+            <strong class="voucher-code-val">TEMANFARMER</strong>
+          </div>
+          <button type="button" class="btn-claim-voucher" id="btn-claim-coupon">Pakai</button>
         </div>
       </div>
     </section>
 
-    <!-- BANNER CAROUSEL POSTER PROMOSI (PILIHAN 2: SWIPEABLE POSTERS) -->
-    <section class="home-posters-showcase" aria-label="Promo Unggulan Buah dan Sayur">
-      <div class="section-header-center">
-        <p class="section-eyebrow">panen istimewa hari ini</p>
-        <h3 class="section-title">Inspirasi Segar Pagi Ini</h3>
-      </div>
-
-      <!-- CAROUSEL WRAPPER WITH ARROWS & TRACK -->
-      <div class="banner-carousel-container">
-        <button class="carousel-nav-btn prev-btn" id="banner-prev-btn" aria-label="Poster Sebelumnya">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-
-        <div class="banner-carousel-track" id="banner-carousel-track" tabindex="0">
-          
-          <!-- SLIDE 1: POSTER BUAH-BUAHAN SEGAR -->
-          <div class="banner-poster-slide poster-slide-buah" id="slide-poster-buah">
-            <div class="poster-card-inner">
-              <div class="poster-media">
-                <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80" alt="Koleksi Buah Manis Petikan Fajar" class="poster-bg-img" loading="eager" />
-                <div class="poster-overlay-gradient buah-gradient"></div>
-              </div>
-              <div class="poster-content">
-                <div class="poster-badge">
-                  <i class="fas fa-crown"></i>
-                  <span>Koleksi Buah Pilihan • Grade A</span>
-                </div>
-                <h4 class="poster-title">Festival Buah Manis Nusantara</h4>
-                <p class="poster-subtitle">
-                  Apel renyah, anggur manis merah, stroberi berembun & mangga ranum dipetik di kematangan sempurna langsung dari kebun mitra.
-                </p>
-                <div class="poster-highlights">
-                  <span class="ph-chip"><i class="fas fa-sun"></i> Manis Alami</span>
-                  <span class="ph-chip"><i class="fas fa-certificate"></i> Jaminan Manis</span>
-                  <span class="ph-chip"><i class="fas fa-tags"></i> Diskon 20%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SLIDE 2: POSTER SAYURAN SEGAR KEBUN -->
-          <div class="banner-poster-slide poster-slide-sayur" id="slide-poster-sayur">
-            <div class="poster-card-inner">
-              <div class="poster-media">
-                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80" alt="Sayuran Hijau Segar Petikan Subuh" class="poster-bg-img" loading="lazy" />
-                <div class="poster-overlay-gradient sayur-gradient"></div>
-              </div>
-              <div class="poster-content">
-                <div class="poster-badge">
-                  <i class="fas fa-leaf"></i>
-                  <span>Panen Jam 05.00 Pagi • Tanpa Pestisida</span>
-                </div>
-                <h4 class="poster-title">Sayuran Hijau Segar Petikan Subuh</h4>
-                <p class="poster-subtitle">
-                  Bayam renyah, brokoli segar, dan wortel manis dataran tinggi. Garansi ganti baru 100% bila sayuran layu di perjalanan!
-                </p>
-                <div class="poster-highlights">
-                  <span class="ph-chip"><i class="fas fa-shield-heart"></i> Garansi Anti-Layu</span>
-                  <span class="ph-chip"><i class="fas fa-droplet"></i> Segar Berembun</span>
-                  <span class="ph-chip"><i class="fas fa-truck-fast"></i> Kirim Sebelum Siang</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SLIDE 3: POSTER PAKET HEMAT & VOUCHER -->
-          <div class="banner-poster-slide poster-slide-paket" id="slide-poster-paket">
-            <div class="poster-card-inner">
-              <div class="poster-media">
-                <img src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?auto=format&fit=crop&w=900&q=80" alt="Paket Belanja Dapur Sehat" class="poster-bg-img" loading="lazy" />
-                <div class="poster-overlay-gradient paket-gradient"></div>
-              </div>
-              <div class="poster-content">
-                <div class="poster-badge">
-                  <i class="fas fa-ticket-simple"></i>
-                  <span>Voucher Diskon • Belanja Hemat</span>
-                </div>
-                <h4 class="poster-title">Belanja Dapur Lengkap Tanpa Becek</h4>
-                <p class="poster-subtitle">
-                  Penuhi kebutuhan vitamin dan serat harian keluarga dengan belanja praktis dari HP. Gunakan voucher diskon TEMANFARMER untuk potongan 20%!
-                </p>
-                <div class="poster-highlights">
-                  <span class="ph-chip"><i class="fas fa-gift"></i> Diskon 20%</span>
-                  <span class="ph-chip"><i class="fas fa-scale-balanced"></i> Timbangan Jujur</span>
-                  <span class="ph-chip"><i class="fas fa-qrcode"></i> QRIS & COD</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <!-- ROW 2: VISUAL CATEGORY NAVIGATION TILES -->
+    <section class="ecom-category-bar" aria-label="Kategori Belanja Cepat">
+      <button type="button" class="ecom-cat-card" data-goto-dept="all">
+        <div class="cat-icon-box cat-all">
+          <i class="fas fa-layer-group"></i>
         </div>
+        <div class="cat-info">
+          <strong>Semua Produk</strong>
+          <span>18 item tersedia</span>
+        </div>
+      </button>
 
-        <button class="carousel-nav-btn next-btn" id="banner-next-btn" aria-label="Poster Berikutnya">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
+      <button type="button" class="ecom-cat-card" data-goto-dept="buah">
+        <div class="cat-icon-box cat-img">
+          <img src="https://res.cloudinary.com/dgwef8ttm/image/upload/v1736589286/25-01-11-03-50-09-954_deco_m2ofbh.jpg" alt="Buah Segar">
+        </div>
+        <div class="cat-info">
+          <strong>Buah Segar</strong>
+          <span>10 pilihan manis</span>
+        </div>
+      </button>
 
-      <!-- CAROUSEL INDICATORS -->
-      <div class="banner-carousel-indicators" id="banner-indicators">
-        <button class="carousel-dot active" data-index="0" aria-label="Slide 1: Buah"></button>
-        <button class="carousel-dot" data-index="1" aria-label="Slide 2: Sayur"></button>
-        <button class="carousel-dot" data-index="2" aria-label="Slide 3: Paket Hemat"></button>
-      </div>
+      <button type="button" class="ecom-cat-card" data-goto-dept="sayur">
+        <div class="cat-icon-box cat-img">
+          <img src="/assets/sayuran/brokoli_organik.jpg" alt="Sayuran Kebun">
+        </div>
+        <div class="cat-info">
+          <strong>Sayuran Kebun</strong>
+          <span>8 sayur & umbi segar</span>
+        </div>
+      </button>
+
+      <button type="button" class="ecom-cat-card" data-goto-dept="all">
+        <div class="cat-icon-box cat-promo">
+          <i class="fas fa-tags"></i>
+        </div>
+        <div class="cat-info">
+          <strong>Paket Grosir</strong>
+          <span>Diskon s/d 20% (≥2 kg)</span>
+        </div>
+      </button>
     </section>
 
+    <!-- ROW 3: RAK PRODUK 1 — BUAH SEGAR POPULER -->
+    <section class="ecom-shelf-section" aria-label="Buah Segar Populer">
+      <div class="ecom-shelf-header">
+        <div class="shelf-title-group">
+          <h3 class="shelf-title">Buah Segar Terlaris</h3>
+          <p class="shelf-subtitle">Manis alami, disortir kualitas Grade A setiap pagi</p>
+        </div>
+        <button type="button" class="btn-shelf-link" data-goto-dept="buah">
+          <span>Lihat Semua Buah (10)</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div id="home-featured-grid" class="featured-fruits-grid"></div>
+    </section>
+
+    <!-- ROW 4: RAK PRODUK 2 — SAYURAN KEBUN PETIKAN PAGI -->
+    <section class="ecom-shelf-section" aria-label="Sayuran Kebun Segar">
+      <div class="ecom-shelf-header">
+        <div class="shelf-title-group">
+          <h3 class="shelf-title">Sayuran Kebun Hari Ini</h3>
+          <p class="shelf-subtitle">Segar dari petani mitra, langsung siap dimasak</p>
+        </div>
+        <button type="button" class="btn-shelf-link" data-goto-dept="sayur">
+          <span>Lihat Semua Sayur (8)</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div id="home-featured-sayur-grid" class="featured-fruits-grid"></div>
+    </section>
+
+    <!-- ROW 5: FULL CATALOG CALLOUT -->
+    <section class="ecom-more-catalog-bar">
+      <div class="more-catalog-text">
+        <h4>Ingin melihat seluruh koleksi panen hari ini?</h4>
+        <p>Tersedia 18 pilihan buah manis dan sayuran segar lengkap dengan filter pencarian.</p>
+      </div>
+      <button type="button" class="btn-ecom-secondary" data-goto-dept="all">
+        <span>Buka Katalog Lengkap (18 Produk)</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </section>
   </div>
 
   <!-- ============================================================
@@ -224,15 +245,14 @@
       <div class="shop-banner-left">
         <button class="btn-back-home" id="btn-shop-back-home" title="Kembali ke Beranda">
           <i class="fas fa-arrow-left"></i>
-          <span>Kembali ke Beranda</span>
+          <span>Beranda</span>
         </button>
-        <h2 class="shop-banner-title">Toko Buah & Sayur Pasar Pagi</h2>
-        <p class="shop-banner-sub">Pilih buah manis & sayuran segar favoritmu langsung dari hasil panen hari ini.</p>
+        <h2 class="shop-banner-title">Katalog Lengkap Pasar Pagi</h2>
       </div>
       <div class="shop-banner-right">
         <div class="live-inventory-badge">
-          <i class="fas fa-box-archive"></i>
-          <span>Stok Terhubung Langsung ke Kebun</span>
+          <i class="fas fa-check-circle"></i>
+          <span>Stok Panen Hari Ini Tersedia</span>
         </div>
       </div>
     </div>
@@ -245,15 +265,15 @@
         <div class="department-filter-bar" id="department-filters">
           <button class="dept-pill active" data-dept="all">
             <i class="fas fa-layer-group"></i>
-            <span>Semua Hasil Panen</span>
+            <span>Semua Produk</span>
           </button>
           <button class="dept-pill" data-dept="buah">
             <i class="fas fa-apple-whole"></i>
-            <span>🍎 Buah Segar</span>
+            <span>Buah Segar</span>
           </button>
           <button class="dept-pill" data-dept="sayur">
             <i class="fas fa-leaf"></i>
-            <span>🥬 Sayuran Kebun</span>
+            <span>Sayuran Kebun</span>
           </button>
         </div>
 

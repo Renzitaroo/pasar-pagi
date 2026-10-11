@@ -257,10 +257,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cleanWeight >= 3.0) {
       discountRate = 0.20;
-      savingLabel = "🌟 Borongan Hemat 20%";
+      savingLabel = "Hemat Grosir 20%";
     } else if (cleanWeight >= 2.0) {
       discountRate = 0.10;
-      savingLabel = "🏷️ Porsi Keluarga Hemat 10%";
+      savingLabel = "Hemat 10%";
     }
 
     const ratePerKg = Math.round(product.basePricePerKg * (1 - discountRate));
@@ -692,7 +692,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.className = `featured-fruit-card ${isSayur ? 'featured-sayur-card' : ''}`;
     card.innerHTML = `
       <div class="featured-img-wrap">
-        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <img src="${product.image}" alt="${product.name}" loading="eager">
       </div>
       <div class="featured-body">
         <div class="featured-meta">
@@ -886,7 +886,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Floating cart bar di mobile
     if (mobileCartBar) {
-      if (totalCount > 0 && currentPage === "shop") {
+      if (totalCount > 0) {
         mobileCartBar.classList.add("visible");
       } else {
         mobileCartBar.classList.remove("visible");
@@ -1188,9 +1188,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hasCompletedProfile = currentUser && currentUser.profileCompleted;
 
-    // Menu Toko Buah & Sayur di Navbar HANYA tampil jika profil sudah lengkap
     if (navShopBtn) {
-      navShopBtn.style.display = hasCompletedProfile ? "inline-flex" : "none";
+      navShopBtn.style.display = "inline-flex";
     }
 
     if (currentUser) {
@@ -1222,9 +1221,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (guestEl) guestEl.style.display = "block";
       if (userEl) userEl.style.display = "none";
-      if (currentPage === "shop") {
-        navigateTo("home");
-      }
     }
 
     if (menuBadge) {
@@ -2114,7 +2110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const target = event.target.closest("button, #mobile-cart-bar, .perk-coupon, .dept-pill, .payment-option, #clear-search, #reset-filter-btn, #brand-logo, .preset-chip");
+    const target = event.target.closest("button, [data-goto-dept], #mobile-cart-bar, .perk-coupon, .dept-pill, .payment-option, #clear-search, #header-clear-search, #reset-filter-btn, #brand-logo, .preset-chip");
     if (!target) return;
 
     // Tutup Drawer Keranjang Mobile
@@ -2131,6 +2127,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (target.id === "nav-shop" || target.id === "btn-goto-shop") {
       currentDepartment = "all";
       document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === "all"));
+      navigateTo("shop");
+      renderProducts();
+      return;
+    }
+    const gotoDeptEl = target.closest("[data-goto-dept]");
+    if (gotoDeptEl) {
+      const dept = gotoDeptEl.dataset.gotoDept || "all";
+      currentDepartment = dept;
+      document.querySelectorAll(".dept-pill").forEach(p => p.classList.toggle("active", p.dataset.dept === dept));
       navigateTo("shop");
       renderProducts();
       return;
@@ -2320,18 +2325,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     // Clear search
-    if (target.id === "clear-search") {
-      searchInput.value = "";
+    if (target.id === "clear-search" || target.id === "header-clear-search") {
+      const headerSearchEl = document.getElementById("header-search-input");
+      const headerClearEl = document.getElementById("header-clear-search");
+      if (searchInput) searchInput.value = "";
+      if (headerSearchEl) headerSearchEl.value = "";
       searchQuery = "";
-      clearSearchBtn.style.display = "none";
+      if (clearSearchBtn) clearSearchBtn.style.display = "none";
+      if (headerClearEl) headerClearEl.style.display = "none";
       renderProducts();
       return;
     }
     // Reset filter
     if (target.id === "reset-filter-btn") {
-      searchInput.value = "";
+      const headerSearchEl = document.getElementById("header-search-input");
+      const headerClearEl = document.getElementById("header-clear-search");
+      if (searchInput) searchInput.value = "";
+      if (headerSearchEl) headerSearchEl.value = "";
       searchQuery = "";
-      clearSearchBtn.style.display = "none";
+      if (clearSearchBtn) clearSearchBtn.style.display = "none";
+      if (headerClearEl) headerClearEl.style.display = "none";
       currentDepartment = "all";
       document.querySelectorAll(".dept-pill").forEach(btn => {
         btn.classList.toggle("active", btn.dataset.dept === "all");
@@ -2703,11 +2716,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* EVENT INPUT: SEARCH & NOTE */
+  const headerSearchInput = document.getElementById("header-search-input");
+  const headerClearSearch = document.getElementById("header-clear-search");
+
   searchInput.addEventListener("input", (e) => {
     searchQuery = e.target.value.trim();
+    if (headerSearchInput && headerSearchInput.value !== e.target.value) {
+      headerSearchInput.value = e.target.value;
+    }
     clearSearchBtn.style.display = searchQuery.length > 0 ? "block" : "none";
+    if (headerClearSearch) headerClearSearch.style.display = searchQuery.length > 0 ? "flex" : "none";
     renderProducts();
   });
+
+  if (headerSearchInput) {
+    headerSearchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim();
+      if (searchInput && searchInput.value !== e.target.value) {
+        searchInput.value = e.target.value;
+      }
+      if (clearSearchBtn) clearSearchBtn.style.display = searchQuery.length > 0 ? "block" : "none";
+      if (headerClearSearch) headerClearSearch.style.display = searchQuery.length > 0 ? "flex" : "none";
+      if (currentPage !== "shop" && searchQuery.length > 0) {
+        currentPage = "shop";
+        pageHomeEl.classList.remove("active");
+        pageShopEl.classList.add("active");
+        navHomeBtn.classList.remove("active");
+        navShopBtn.classList.add("active");
+        if (bnavHome) bnavHome.classList.remove("active");
+        if (bnavShop) bnavShop.classList.add("active");
+      }
+      renderProducts();
+    });
+  }
 
   document.getElementById("note").addEventListener("input", () => {
     const previewEl = document.querySelector(".note-preview");
