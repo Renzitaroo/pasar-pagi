@@ -24,13 +24,37 @@ if (fs.existsSync(envPath)) {
 
 const PORT = process.env.PORT || 3001;
 
+// Penyimpanan JSON persisten untuk Produk & Pesanan (Local Backend Store)
+const dataDir = path.resolve(__dirname, "data");
+const dbFilePath = path.resolve(dataDir, "db.json");
+
+function readDb() {
+  try {
+    if (fs.existsSync(dbFilePath)) {
+      return JSON.parse(fs.readFileSync(dbFilePath, "utf-8"));
+    }
+  } catch (err) {
+    console.error("[DB_READ_ERROR]", err.message);
+  }
+  return { products: null, orders: [] };
+}
+
+function writeDb(data) {
+  try {
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+    fs.writeFileSync(dbFilePath, JSON.stringify(data, null, 2), "utf-8");
+  } catch (err) {
+    console.error("[DB_WRITE_ERROR]", err.message);
+  }
+}
+
 // Penyimpanan status pesanan in-memory
 const orderStore = new Map();
 
 const server = http.createServer(async (req, res) => {
   // CORS Headers
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Callback-Signature, X-Callback-Timestamp");
 
   if (req.method === "OPTIONS") {
@@ -217,13 +241,82 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // 5. PRODUCTS API (/api/products)
+  if (url.pathname === "/api/products") {
+    if (req.method === "GET") {
+      const db = readDb();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ success: true, products: db.products }));
+      return;
+    }
+
+    if (req.method === "POST" || req.method === "PUT") {
+      let rawBody = "";
+      req.on("data", (chunk) => { rawBody += chunk; });
+      req.on("end", () => {
+        try {
+          const body = JSON.parse(rawBody || "{}");
+          const db = readDb();
+          if (Array.isArray(body.products)) {
+            db.products = body.products;
+          }
+          writeDb(db);
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: true, products: db.products }));
+        } catch (err) {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: false, message: err.message }));
+        }
+      });
+      return;
+    }
+  }
+
+  // 6. ORDERS API (/api/orders)
+  if (url.pathname === "/api/orders") {
+    if (req.method === "GET") {
+      const db = readDb();
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ success: true, orders: db.orders || [] }));
+      return;
+    }
+
+    if (req.method === "POST" || req.method === "PUT" || req.method === "PATCH") {
+      let rawBody = "";
+      req.on("data", (chunk) => { rawBody += chunk; });
+      req.on("end", () => {
+        try {
+          const body = JSON.parse(rawBody || "{}");
+          const db = readDb();
+          if (!Array.isArray(db.orders)) db.orders = [];
+          if (Array.isArray(body.orders)) {
+            db.orders = body.orders;
+          } else if (body.order) {
+            const idx = db.orders.findIndex((o) => o.id === body.order.id);
+            if (idx >= 0) db.orders[idx] = { ...db.orders[idx], ...body.order };
+            else db.orders.unshift(body.order);
+          }
+          writeDb(db);
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: true, orders: db.orders }));
+        } catch (err) {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ success: false, message: err.message }));
+        }
+      });
+      return;
+    }
+  }
+
   // Not Found
   res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "Endpoint not found" }));
 });
 
 server.listen(PORT, () => {
-  console.log(`🚀 MPG Backend Server aktif di http://localhost:${PORT}`);
+  console.log(`🚀 Pasar Pagi Backend Server aktif di http://localhost:${PORT}`);
+  console.log(`   - Products: GET/PUT http://localhost:${PORT}/api/products`);
+  console.log(`   - Orders  : GET/POST http://localhost:${PORT}/api/orders`);
   console.log(`   - Checkout: POST http://localhost:${PORT}/api/checkout`);
   console.log(`   - Webhook : POST http://localhost:${PORT}/api/webhook/payment-success`);
 });

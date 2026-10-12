@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasar Pagi — Admin Dashboard (Stok & Pesanan)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/src/admin.css">
+</head>
+<body>
+
+  <!-- 1. LOGIN GATE -->
+  <div class="login-gate" id="login-gate">
+    <div class="login-card">
+      <div class="login-brand">
+        <h1>Pasar Pagi</h1>
+        <span>Number one freshness • Admin Portal</span>
+      </div>
+      <p>Masukkan PIN atau Password Admin untuk mengatur stok gudang, harga harian, dan memantau pesanan masuk.</p>
+      <form id="admin-login-form">
+        <div class="form-field">
+          <label for="admin-pin">Password / PIN Admin</label>
+          <input type="password" id="admin-pin" class="form-input" placeholder="Masukkan password admin..." required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">
+          <i class="fas fa-lock-open"></i>
+          <span>Masuk ke Dashboard Admin</span>
+        </button>
+      </form>
+      <div class="login-hint">
+        <i class="fas fa-circle-info"></i> Default Password: <strong>admin123</strong>
+      </div>
+      <div style="margin-top: 1rem; text-align: center;">
+        <a href="/" class="btn btn-outline" style="width: 100%;">
+          <i class="fas fa-store"></i>
+          <span>Kembali ke Halaman Toko</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN ADMIN DASHBOARD -->
+  <div class="admin-shell" id="admin-shell">
+    <header class="admin-header">
+      <div class="admin-brand">
+        <h1>Pasar Pagi</h1>
+        <span class="admin-badge">Admin Panel</span>
+      </div>
+
+      <div class="admin-header-actions">
+        <div class="sync-pill" id="sync-status-pill">
+          <span class="sync-dot"></span>
+          <span id="sync-status-text">Sinkronisasi Real-Time Aktif</span>
+        </div>
+        <button type="button" class="btn btn-outline" id="btn-open-supabase">
+          <i class="fas fa-database"></i>
+          <span>Database Cloud (Supabase)</span>
+        </button>
+        <a href="/" target="_blank" class="btn btn-outline">
+          <i class="fas fa-up-right-from-square"></i>
+          <span>Buka Toko</span>
+        </a>
+        <button type="button" class="btn btn-danger" id="btn-admin-logout">
+          <i class="fas fa-right-from-bracket"></i>
+          <span>Keluar</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="admin-container">
+      <!-- KPI CARDS -->
+      <section class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label"><span>Total Produk</span> <i class="fas fa-boxes-stacked" style="color: var(--green);"></i></div>
+          <div class="kpi-value" id="kpi-total-products">18</div>
+          <div class="kpi-sub" id="kpi-sub-products">10 Buah • 8 Sayur</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label"><span>Total Stok Gudang</span> <i class="fas fa-scale-balanced" style="color: var(--blue);"></i></div>
+          <div class="kpi-value" id="kpi-total-stock">0 kg</div>
+          <div class="kpi-sub">Siap dipesan hari ini</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label"><span>Perlu Restock (≤ 5 kg)</span> <i class="fas fa-triangle-exclamation" style="color: var(--amber);"></i></div>
+          <div class="kpi-value" id="kpi-low-stock">0</div>
+          <div class="kpi-sub" id="kpi-sub-low">Semua stok aman</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label"><span>Total Pesanan & Omzet</span> <i class="fas fa-wallet" style="color: var(--green);"></i></div>
+          <div class="kpi-value" id="kpi-total-revenue">Rp 0</div>
+          <div class="kpi-sub" id="kpi-sub-orders">0 pesanan masuk</div>
+        </div>
+      </section>
+
+      <!-- NAVIGATION TABS -->
+      <div class="admin-tabs-bar">
+        <div class="tab-group">
+          <button type="button" class="tab-btn active" data-tab="inventory">
+            <i class="fas fa-seedling"></i>
+            <span>Stok & Harga Produk</span>
+          </button>
+          <button type="button" class="tab-btn" data-tab="orders">
+            <i class="fas fa-receipt"></i>
+            <span>Pesanan Masuk</span>
+            <span id="tab-order-count" style="background: var(--green); color: #fff; padding: 1px 6px; border-radius: 99px; font-size: 0.72rem;">0</span>
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-outline" id="btn-reset-catalog" title="Kembalikan ke 18 produk awal">
+            <i class="fas fa-rotate-left"></i>
+            <span>Reset Stok Default</span>
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-add-product">
+            <i class="fas fa-plus"></i>
+            <span>Tambah Produk Baru</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: INVENTORY & STOCK -->
+      <section id="tab-panel-inventory">
+        <div class="toolbar-card">
+          <div class="toolbar-left">
+            <div class="search-wrap">
+              <i class="fas fa-search"></i>
+              <input type="text" id="admin-search" placeholder="Cari nama buah atau sayur...">
+            </div>
+            <div class="filter-pills">
+              <button type="button" class="filter-pill active" data-filter="all">Semua</button>
+              <button type="button" class="filter-pill" data-filter="buah">Buah Segar</button>
+              <button type="button" class="filter-pill" data-filter="sayur">Sayuran Kebun</button>
+              <button type="button" class="filter-pill" data-filter="low">Stok Menipis (≤ 5 kg)</button>
+            </div>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-sub); font-weight: 600;">
+            <i class="fas fa-bolt" style="color: var(--amber);"></i> Perubahan stok & harga otomatis langsung ter-update di halaman toko.
+          </div>
+        </div>
+
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Produk</th>
+                <th>Kategori</th>
+                <th>Harga / kg</th>
+                <th>Atur Stok (kg)</th>
+                <th>Status</th>
+                <th>Beranda</th>
+                <th style="text-align: right;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="inventory-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 2: INCOMING ORDERS -->
+      <section id="tab-panel-orders" style="display: none;">
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>ID & Waktu</th>
+                <th>Pelanggan & Alamat</th>
+                <th>Item Pesanan</th>
+                <th>Metode & Total</th>
+                <th>Status Pesanan</th>
+                <th style="text-align: right;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL TAMBAH / EDIT PRODUK -->
+  <div class="modal-backdrop" id="product-modal">
+    <div class="modal-box">
+      <div class="modal-top">
+        <h3 id="product-modal-title">Tambah Produk Baru</h3>
+        <button type="button" class="btn btn-outline" id="btn-close-product-modal" style="padding: 0.3rem 0.6rem;"><i class="fas fa-times"></i></button>
+      </div>
+      <form id="product-form">
+        <input type="hidden" id="prod-id">
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="prod-name">Nama Produk</label>
+            <input type="text" id="prod-name" class="form-input" placeholder="mis. Alpukat Mentega" required>
+          </div>
+          <div class="form-field">
+            <label for="prod-type">Kategori Utama</label>
+            <select id="prod-type" class="form-select" required>
+              <option value="buah">Buah Segar</option>
+              <option value="sayur">Sayuran Kebun</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-field">
+            <label for="prod-price">Harga per Kg (Rp)</label>
+            <input type="number" id="prod-price" class="form-input" min="1000" step="500" placeholder="35000" required>
+          </div>
+          <div class="form-field">
+            <label for="prod-stock">Stok Tersedia (kg)</label>
+            <input type="number" id="prod-stock" class="form-input" min="0" step="0.5" placeholder="25" required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="prod-image">URL Foto Produk</label>
+          <input type="text" id="prod-image" class="form-input" placeholder="https://... atau /assets/sayuran/..." required>
+        </div>
+
+        <div class="form-field">
+          <label for="prod-desc">Deskripsi Singkat</label>
+          <textarea id="prod-desc" class="form-textarea" rows="2" placeholder="Manis segar pilihan..."></textarea>
+        </div>
+
+        <div class="form-field" style="display: flex; align-items: center; gap: 0.5rem;">
+          <input type="checkbox" id="prod-featured" style="width: 18px; height: 18px;">
+          <label for="prod-featured" style="margin: 0; cursor: pointer;">Tampilkan di Rak Populer Beranda (Featured)</label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1.25rem;">
+          <button type="button" class="btn btn-outline" id="btn-cancel-product">Batal</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check"></i>
+            <span>Simpan Produk</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIGURASI SUPABASE CLOUD -->
+  <div class="modal-backdrop" id="supabase-modal">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-top">
+        <h3><i class="fas fa-cloud" style="color: var(--green);"></i> Koneksi Database Cloud (Supabase)</h3>
+        <button type="button" class="btn btn-outline" id="btn-close-supabase-modal" style="padding: 0.3rem 0.6rem;"><i class="fas fa-times"></i></button>
+      </div>
+      <p style="font-size: 0.84rem; color: var(--text-sub); margin-top: 0; line-height: 1.5;">
+        Secara default, perubahan stok otomatis tersimpan di <strong>Local Backend (`server/index.js`) & Browser Storage</strong>. Jika ingin di-deploy ke <strong>Vercel</strong> agar stok tersimpan di Cloud, masukkan URL & Anon Key project Supabase kamu di bawah:
+      </p>
+
+      <div class="form-field">
+        <label for="sb-url">Supabase Project URL</label>
+        <input type="url" id="sb-url" class="form-input" placeholder="https://xxxx.supabase.co">
+      </div>
+      <div class="form-field">
+        <label for="sb-key">Supabase Anon Public Key</label>
+        <input type="text" id="sb-key" class="form-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+        <button type="button" class="btn btn-primary" id="btn-save-supabase">
+          <i class="fas fa-cloud-arrow-up"></i>
+          <span>Simpan & Upload Katalog ke Supabase</span>
+        </button>
+        <button type="button" class="btn btn-outline" id="btn-clear-supabase">
+          <span>Putuskan Cloud (Pakai Mode Lokal)</span>
+        </button>
+      </div>
+
+      <div style="border-top: 1px solid var(--border); padding-top: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <strong style="font-size: 0.8rem;">SQL Setup Tabel Supabase (Jalankan 1x di SQL Editor Supabase):</strong>
+          <button type="button" class="btn btn-outline" id="btn-copy-sql" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">
+            <i class="fas fa-copy"></i> Salin SQL
+          </button>
+        </div>
+        <pre class="sql-pre" id="supabase-sql-code">create table if not exists public.products (
+  id bigint primary key,
+  name text not null,
+  type text not null,
+  category text,
+  "basePricePerKg" numeric not null default 0,
+  "stockKg" numeric not null default 0,
+  "produceId" text,
+  desc text,
+  image text,
+  featured boolean default false
+);
+alter table public.products enable row level security;
+create policy "Public read products" on public.products for select using (true);
+create policy "Public write products" on public.products for all using (true) with check (true);</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="admin-toast">Tersimpan!</div>
+
+  <script type="module" src="/src/admin.js"></script>
+</body>
+</html>

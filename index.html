@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/src/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Google Identity Services (GIS) SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -17,12 +17,9 @@
   <!-- HEADER & NAVIGATION (MODERN E-COMMERCE STICKY BAR) -->
   <header class="header">
     <div class="brand" id="brand-logo" title="Kembali ke Beranda">
-      <div class="brand-logo-mark">
-        <i class="fas fa-leaf"></i>
-      </div>
       <div class="brand-logo-copy">
         <h1 class="brand-title">Pasar Pagi</h1>
-        <span class="brand-tagline">Segar Harian</span>
+        <span class="brand-tagline">Number one freshness</span>
       </div>
     </div>
 
@@ -112,14 +109,14 @@
        HALAMAN 1: STOREFRONT UTAMA (E-COMMERCE DASHBOARD)
        ============================================================ -->
   <div id="page-home" class="page-view active">
-    <!-- ROW 1: COMPACT COMMERCIAL PROMO BENTO + VOUCHER CARD -->
-    <section class="ecom-bento-top" aria-label="Promo Utama dan Voucher">
+    <!-- ROW 1: COMPACT COMMERCIAL BANNER -->
+    <section class="ecom-bento-top" aria-label="Banner Utama">
       <div class="ecom-main-banner">
         <div class="ecom-banner-copy">
           <span class="ecom-banner-pill">Panen Pagi • Pengiriman Instan</span>
           <h2 class="ecom-banner-title">Sayur & Buah Segar Langsung dari Kebun</h2>
           <p class="ecom-banner-desc">
-            Harga petani tanpa perantara. Beli takaran 2 kg otomatis hemat 10%, beli 3 kg hemat 20%.
+            Belanja sayur & buah harian gak perlu ribet. Stok baru tiap pagi, langsung diantar ke depan pintu.
           </p>
           <div class="ecom-banner-actions">
             <button type="button" class="btn-ecom-cta" id="btn-goto-shop">
@@ -130,22 +127,6 @@
         </div>
         <div class="ecom-banner-visual">
           <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Koleksi Buah dan Sayur Segar" loading="eager">
-        </div>
-      </div>
-
-      <div class="ecom-voucher-box">
-        <div class="voucher-top-row">
-          <span class="voucher-tag"><i class="fas fa-ticket-simple"></i> Voucher Pelanggan</span>
-          <span class="voucher-off">Hemat 20%</span>
-        </div>
-        <h3 class="voucher-title">Diskon 20% Semua Produk</h3>
-        <p class="voucher-desc">Gunakan kode promo di bawah untuk potongan langsung di keranjang belanja.</p>
-        <div class="voucher-ticket-bar">
-          <div class="voucher-code-wrap">
-            <span class="voucher-code-label">KODE PROMO</span>
-            <strong class="voucher-code-val">TEMANFARMER</strong>
-          </div>
-          <button type="button" class="btn-claim-voucher" id="btn-claim-coupon">Pakai</button>
         </div>
       </div>
     </section>
@@ -168,7 +149,7 @@
         </div>
         <div class="cat-info">
           <strong>Buah Segar</strong>
-          <span>10 pilihan manis</span>
+          <span>10 pilihan buah</span>
         </div>
       </button>
 
@@ -178,17 +159,7 @@
         </div>
         <div class="cat-info">
           <strong>Sayuran Kebun</strong>
-          <span>8 sayur & umbi segar</span>
-        </div>
-      </button>
-
-      <button type="button" class="ecom-cat-card" data-goto-dept="all">
-        <div class="cat-icon-box cat-promo">
-          <i class="fas fa-tags"></i>
-        </div>
-        <div class="cat-info">
-          <strong>Paket Grosir</strong>
-          <span>Diskon s/d 20% (≥2 kg)</span>
+          <span>8 pilihan sayur</span>
         </div>
       </button>
     </section>
@@ -334,17 +305,6 @@
               Catatan Pengiriman
             </label>
             <textarea id="note" class="note-input" placeholder="mis. Titipkan di pos satpam / depan pintu"></textarea>
-          </div>
-
-          <div class="field-group coupon-group">
-            <label class="field-label" for="coupon">
-              <i class="fas fa-tag"></i> Kode Promo / Kupon
-            </label>
-            <div class="coupon-row">
-              <input id="coupon" class="coupon-input" placeholder="mis. TEMANFARMER" autocomplete="off" spellcheck="false">
-              <button id="apply-coupon" class="coupon-btn">Terapkan</button>
-            </div>
-            <div id="coupon-msg" class="coupon-msg"></div>
           </div>
 
           <div class="cart-breakdown" id="cart-summary-breakdown"></div>
@@ -719,93 +679,6 @@
     </div>
   </div>
 
-  <!-- MODAL PEMBUATAN PROFIL BARU (ONBOARDING PROFILE SETUP) -->
-  <div class="modal-overlay" id="profile-setup-modal" role="dialog" aria-modal="true">
-    <div class="modal-card profile-setup-card">
-      <div class="modal-header">
-        <div class="modal-badge"><i class="fas fa-sparkles"></i> Profil Pasar Pagi</div>
-        <h3>Selamat Datang di Pasar Pagi! 🌿</h3>
-        <p class="modal-sub">Lengkapi profilmu agar kami bisa menyiapkan petikan buah & sayuran segar terbaik untukmu.</p>
-        <button class="modal-close-btn" id="profile-setup-close" title="Tutup"><i class="fas fa-times"></i></button>
-      </div>
-
-      <form id="profile-setup-form" class="profile-setup-form">
-        <!-- 4. PEMILIHAN ICON PROFILE LUCU & PREVIEW -->
-        <div class="field-group">
-          <label class="field-label">
-            <i class="fas fa-icons"></i> Pilih Icon Karakter Lucu Kamu <span class="required">*</span>
-          </label>
-          <p class="field-note">Pilih satu karakter buah / sayur ceria favoritmu:</p>
-          
-          <div class="setup-avatar-preview-box">
-            <div class="setup-avatar-big-wrap" id="setup-avatar-preview-circle">
-              <span class="setup-avatar-emoji" id="setup-avatar-preview-emoji">🍎</span>
-              <img class="setup-avatar-img" id="setup-avatar-preview-img" src="" alt="Avatar" style="display: none;">
-            </div>
-            <div class="setup-avatar-meta">
-              <strong id="setup-avatar-preview-name">Si Apel Riang</strong>
-              <span id="setup-avatar-preview-sub">Karakter Pasar Pagi kamu</span>
-            </div>
-          </div>
-
-          <div class="cute-avatar-grid" id="setup-cute-avatar-grid">
-            <!-- Dirender secara dinamis oleh JavaScript -->
-          </div>
-        </div>
-
-        <!-- 1. PENGISIAN NAMA & 2. UMUR -->
-        <div class="form-row-2col">
-          <div class="field-group">
-            <label class="field-label" for="setup-name">
-              <i class="fas fa-user"></i> 1. Nama Lengkap <span class="required">*</span>
-            </label>
-            <input type="text" id="setup-name" class="input-text" placeholder="Nama Anda" required>
-          </div>
-          <div class="field-group">
-            <label class="field-label" for="setup-age">
-              <i class="fas fa-cake-candles"></i> 2. Umur (Tahun) <span class="required">*</span>
-            </label>
-            <input type="number" id="setup-age" class="input-text" placeholder="mis. 24" min="5" max="120" required>
-          </div>
-        </div>
-
-        <!-- 3. SAYURAN ATAU BUAH YANG DISUKAI -->
-        <div class="field-group">
-          <label class="field-label">
-            <i class="fas fa-heart"></i> 3. Buah atau Sayuran yang Kamu Sukai <span class="required">*</span>
-          </label>
-          <p class="field-note">Pilih satu atau lebih buah & sayur kesukaanmu:</p>
-          <div class="produce-chips-grid" id="setup-fav-produce-chips">
-            <!-- Dirender secara dinamis oleh JavaScript -->
-          </div>
-        </div>
-
-        <!-- ALAMAT & KONTAK TAMBAHAN (OPSIONAL) -->
-        <div class="form-row-2col">
-          <div class="field-group">
-            <label class="field-label" for="setup-phone">
-              <i class="fab fa-whatsapp"></i> Nomor WhatsApp <span class="field-optional">(opsional)</span>
-            </label>
-            <input type="tel" id="setup-phone" class="input-text" placeholder="mis. 081234567890">
-          </div>
-          <div class="field-group">
-            <label class="field-label" for="setup-address">
-              <i class="fas fa-location-dot"></i> Alamat Pengantaran <span class="field-optional">(opsional)</span>
-            </label>
-            <input type="text" id="setup-address" class="input-text" placeholder="Kompleks, Jalan, Kota...">
-          </div>
-        </div>
-
-        <div class="modal-actions setup-actions">
-          <button type="submit" class="btn-confirm btn-setup-submit" id="btn-setup-submit">
-            <span>✨ Selesaikan Profil & Buka Toko Buah</span>
-            <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <!-- MODAL PROFIL & ALAMAT CUSTOMER -->
   <div class="modal-overlay" id="profile-modal" role="dialog" aria-modal="true">
     <div class="modal-card profile-edit-card">
@@ -978,6 +851,6 @@
     </button>
   </nav>
 
-  <script type="module" src="/main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
