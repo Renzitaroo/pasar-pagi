@@ -12,6 +12,10 @@
 
 [🛒 **Buka Storefront**](#🚀-quick-start) · [⚙️ **Admin Dashboard (`/admin.html`)**](#🛠️-admin-dashboard--manajemen-stok) · [🏗️ **Arsitektur Sistem**](#🏗️-arsitektur-hybrid-sync)
 
+<br />
+
+<img src="./public/preview-beranda.png" alt="Preview Halaman Beranda Pasar Pagi" width="100%" style="border-radius: 12px; border: 1px solid #e5e7eb;" />
+
 </div>
 
 ---
