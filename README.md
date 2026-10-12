@@ -4,6 +4,10 @@
 
 **Platform E-Commerce Buah & Sayur Segar Harian dengan Real-Time Admin Inventory & Hybrid Cloud Sync**
 
+<img src="./public/preview-beranda.png" alt="Preview Halaman Beranda Pasar Pagi" width="100%" style="border-radius: 12px; border: 1px solid #e5e7eb;" />
+
+<br />
+
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![JavaScript](https://img.shields.io/badge/Vanilla_JS-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=2b1f14)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
@@ -11,10 +15,6 @@
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 [🛒 **Buka Storefront**](#🚀-quick-start) · [⚙️ **Admin Dashboard (`/admin.html`)**](#🛠️-admin-dashboard--manajemen-stok) · [🏗️ **Arsitektur Sistem**](#🏗️-arsitektur-hybrid-sync)
-
-<br />
-
-<img src="./public/preview-beranda.png" alt="Preview Halaman Beranda Pasar Pagi" width="100%" style="border-radius: 12px; border: 1px solid #e5e7eb;" />
 
 </div>
 
