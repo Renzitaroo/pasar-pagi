@@ -6,9 +6,9 @@ Platform belanja buah & sayur segar harian (Storefront + Admin Dashboard) dengan
 
 ```text
 ├── public/                 # Aset gambar statis produk & kategori
-├── server/                 # Local backend API fallback (Port 3001) & SQL schema Supabase
-│   ├── server.js           # Express server + JSON database fallback
-│   └── supabase-schema.sql # Skema tabel & RLS policy untuk Supabase
+├── server/                 # Local backend API fallback (Port 3001) & payment gateway
+│   ├── index.js            # Express REST API (/api/products, /api/orders, /api/checkout)
+│   └── mpg.js              # Maybank Payment Gateway helper
 ├── src/                    # Kode sumber aplikasi (Storefront & Admin)
 │   ├── catalog.js          # Single source of truth katalog 18 produk & helper Supabase
 │   ├── main.js             # Logic utama Storefront (keranjang, filter, checkout WA/PDF)
