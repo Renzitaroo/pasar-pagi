@@ -1029,8 +1029,16 @@ document.addEventListener("DOMContentLoaded", () => {
       panel.classList.toggle("active", panel.id === `panel-${methodKey}`);
     });
 
-    if (methodKey === "qris") startQrisTimer();
-    else stopQrisTimer();
+    const confirmBtn = document.getElementById("review-confirm");
+    if (confirmBtn) {
+      if (methodKey === "qris") {
+        confirmBtn.innerHTML = `<i class="fas fa-qrcode"></i> Terbitkan & Bayar QRIS`;
+      } else if (methodKey === "transfer") {
+        confirmBtn.innerHTML = `<i class="fas fa-check-circle"></i> Konfirmasi Transfer Bank`;
+      } else if (methodKey === "cod") {
+        confirmBtn.innerHTML = `<i class="fas fa-truck-fast"></i> Pesan Sekarang (COD)`;
+      }
+    }
   }
 
   function selectBank(bankKey) {
@@ -1089,6 +1097,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openReview() {
     closeCartDrawer();
+    const toastEl = document.getElementById("toast");
+    if (toastEl) toastEl.classList.remove("show");
+
     if (Object.keys(cart).length === 0) {
       showToast("Keranjang kamu masih kosong.");
       return;
@@ -1246,12 +1257,12 @@ document.addEventListener("DOMContentLoaded", () => {
             items: orderedItems
           });
         } catch (err) {
-          showToast("Gagal menerbitkan QRIS Dinamis. Coba lagi atau gunakan Transfer Bank.");
-          if (confirmBtn) {
-            confirmBtn.disabled = false;
-            confirmBtn.innerHTML = originalBtnContent;
-          }
-          return;
+          console.warn("[QRIS_FALLBACK]", err.message);
+          bankInfo = BANK_ACCOUNTS[selectedBank] || BANK_ACCOUNTS.bca;
+          activePaymentMethod = "transfer";
+          paymentMethodName = `Transfer Bank (${bankInfo.code}) [Fallback Gateway]`;
+          orderStatus = "Menunggu Pembayaran";
+          showToast("Koneksi QRIS sedang sibuk. Pesanan dialihkan ke Transfer Bank agar tetap aman tersimpan!");
         } finally {
           if (confirmBtn) {
             confirmBtn.disabled = false;
@@ -1334,6 +1345,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openSuccessModal(order) {
+    const toastEl = document.getElementById("toast");
+    if (toastEl) toastEl.classList.remove("show");
+
     const receiptEl = document.getElementById("order-receipt-content");
     const itemsListHtml = (order.items || []).map(i => `
       <div class="receipt-item-row">
@@ -1351,7 +1365,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <code>${order.bank.number}</code>
             <span>a.n ${order.bank.holder}</span>
           </div>
-          <small>Status: <strong style="color: #f57f17;">Menunggu Transfer</strong>. Pesanan diproses setelah dana masuk.</small>
+          <small>Status: <strong style="color: #f57f17;">Menunggu Transfer</strong>. Silakan kirim bukti transfer ke WhatsApp kasir.</small>
         </div>
       `;
     } else if (order.paymentMethod === "cod") {
@@ -1386,7 +1400,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </small>
             </div>
           ` : ""}
-          <small>Status: <strong style="color: #f57f17;"><i class="fas fa-clock"></i> Menunggu Scan & Pembayaran QRIS</strong> (Otomatis dicek oleh listener kasir).</small>
+          <small>Status: <strong style="color: #f57f17;"><i class="fas fa-clock"></i> Menunggu Scan & Pembayaran QRIS</strong> (Otomatis dicek oleh sistem).</small>
         </div>
       `;
     }
@@ -1413,6 +1427,35 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><i class="fas fa-truck"></i> Estimasi Kirim: <strong>Pagi ini pukul 08:30 - 10:30 WIB</strong></p>
       </div>
     `;
+
+    // Pasang tautan WhatsApp otomatis
+    const STORE_WA_NUMBER = (import.meta.env && import.meta.env.VITE_STORE_WA_NUMBER) || "6281298765432";
+    const itemsSummary = (order.items || [])
+      .map((it, idx) => `${idx + 1}. ${it.name} (${it.weightLabel}) x${it.count} = ${formatMoney(it.count * it.price)}`)
+      .join("\n");
+
+    const waMsg =
+`*HALO PASAR PAGI, SAYA MAU KONFIRMASI PESANAN* 🥬🍎
+────────────────────────
+📦 *No. Pesanan:* #${order.id}
+🗓️ *Waktu:* ${order.displayDate}
+👤 *Penerima:* ${order.customer.name}
+📱 *No. HP:* ${order.customer.phone}
+📍 *Alamat:* ${order.customer.address}
+
+🛒 *Daftar Belanja:*
+${itemsSummary}
+
+💰 *Total Tagihan:* ${formatMoney(order.breakdown.total)}
+💳 *Metode Bayar:* ${order.paymentMethodName}
+${order.note ? `📝 *Catatan:* "${order.note}"\n` : ""}────────────────────────
+Mohon segera diproses dan dikirimkan ya, terima kasih! 🌱`;
+
+    const waUrl = `https://wa.me/${STORE_WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+    const successWaBtn = document.getElementById("success-wa-btn");
+    if (successWaBtn) {
+      successWaBtn.href = waUrl;
+    }
 
     successModal.classList.add("open");
     document.body.style.overflow = "hidden";

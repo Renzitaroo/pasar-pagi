@@ -418,76 +418,37 @@
                 <div class="qris-header">
                   <div class="qris-brand">
                     <span class="qris-tag">QRIS</span>
-                    <span class="qris-aspi">PEMBAYARAN NASIONAL</span>
+                    <span class="qris-aspi">PEMBAYARAN NASIONAL 0% MDR</span>
                   </div>
                   <div class="qris-merchant-badge">
                     <i class="fas fa-store"></i> Pasar Pagi Segar
                   </div>
                 </div>
                 
-                <div class="qris-qr-wrapper">
-                  <div class="qris-qr-box" id="qris-qr-display">
-                    <svg class="qris-svg" viewBox="0 0 200 200" width="140" height="140">
-                      <rect width="200" height="200" fill="#ffffff" rx="10"/>
-                      <!-- QR Finder Corners -->
-                      <rect x="15" y="15" width="45" height="45" fill="#1b2413" rx="4"/>
-                      <rect x="22" y="22" width="31" height="31" fill="#ffffff" rx="2"/>
-                      <rect x="27" y="27" width="21" height="21" fill="#4f633f" rx="2"/>
-
-                      <rect x="140" y="15" width="45" height="45" fill="#1b2413" rx="4"/>
-                      <rect x="147" y="22" width="31" height="31" fill="#ffffff" rx="2"/>
-                      <rect x="152" y="27" width="21" height="21" fill="#4f633f" rx="2"/>
-
-                      <rect x="15" y="140" width="45" height="45" fill="#1b2413" rx="4"/>
-                      <rect x="22" y="147" width="31" height="31" fill="#ffffff" rx="2"/>
-                      <rect x="27" y="152" width="21" height="21" fill="#4f633f" rx="2"/>
-
-                      <!-- QR Pattern Elements -->
-                      <circle cx="75" cy="25" r="4.5" fill="#2b2015"/>
-                      <circle cx="95" cy="25" r="4.5" fill="#2b2015"/>
-                      <circle cx="115" cy="25" r="4.5" fill="#2b2015"/>
-                      <circle cx="75" cy="45" r="4.5" fill="#4f633f"/>
-                      <circle cx="115" cy="45" r="4.5" fill="#4f633f"/>
-                      <circle cx="85" cy="65" r="4.5" fill="#2b2015"/>
-                      <circle cx="105" cy="65" r="4.5" fill="#2b2015"/>
-                      <circle cx="125" cy="65" r="4.5" fill="#2b2015"/>
-
-                      <circle cx="25" cy="75" r="4.5" fill="#2b2015"/>
-                      <circle cx="45" cy="75" r="4.5" fill="#2b2015"/>
-                      <circle cx="25" cy="95" r="4.5" fill="#4f633f"/>
-                      <circle cx="45" cy="115" r="4.5" fill="#2b2015"/>
-
-                      <circle cx="155" cy="75" r="4.5" fill="#2b2015"/>
-                      <circle cx="175" cy="95" r="4.5" fill="#2b2015"/>
-                      <circle cx="155" cy="115" r="4.5" fill="#4f633f"/>
-
-                      <!-- Center Logo Badge -->
-                      <rect x="78" y="78" width="44" height="44" rx="8" fill="#4f633f"/>
-                      <text x="100" y="107" font-family="sans-serif" font-size="22" text-anchor="middle">🍎</text>
-
-                      <!-- Bottom Elements -->
-                      <circle cx="75" cy="135" r="4.5" fill="#2b2015"/>
-                      <circle cx="95" cy="135" r="4.5" fill="#2b2015"/>
-                      <circle cx="115" cy="135" r="4.5" fill="#4f633f"/>
-                      <circle cx="85" cy="155" r="4.5" fill="#4f633f"/>
-                      <circle cx="125" cy="155" r="4.5" fill="#2b2015"/>
-                      <circle cx="145" cy="155" r="4.5" fill="#2b2015"/>
-                      <circle cx="75" cy="175" r="4.5" fill="#2b2015"/>
-                      <circle cx="115" cy="175" r="4.5" fill="#2b2015"/>
-                      <circle cx="165" cy="175" r="4.5" fill="#4f633f"/>
-                    </svg>
+                <div class="qris-prep-wrapper">
+                  <div class="qris-prep-visual">
+                    <div class="qris-prep-icon">
+                      <i class="fas fa-qrcode"></i>
+                    </div>
+                    <span class="qris-prep-tag">QRIS Dinamis</span>
                   </div>
                   <div class="qris-info">
-                    <div class="qris-countdown">
-                      <i class="fas fa-stopwatch"></i> Berlaku dalam: <strong id="qris-timer">15:00</strong>
-                    </div>
                     <div class="qris-amount-box">
-                      <span>Total Tagihan:</span>
+                      <span>Total Tagihan Pas:</span>
                       <strong id="qris-total-amount">Rp 0</strong>
                     </div>
                     <p class="qris-guide-text">
-                      Scan kode QR di atas menggunakan aplikasi <strong>GoPay, OVO, ShopeePay, DANA, BCA, Mandiri, BRI</strong>, dll.
+                      Kode QR resmi akan <strong>diterbitkan otomatis</strong> saat Anda menekan tombol di bawah. Siap discan oleh seluruh aplikasi m-Banking & e-Wallet:
                     </p>
+                    <div class="qris-wallets-row">
+                      <span class="wallet-chip"><i class="fas fa-mobile-screen"></i> BCA</span>
+                      <span class="wallet-chip">Livin' Mandiri</span>
+                      <span class="wallet-chip">BRImo</span>
+                      <span class="wallet-chip">GoPay</span>
+                      <span class="wallet-chip">OVO</span>
+                      <span class="wallet-chip">DANA</span>
+                      <span class="wallet-chip">ShopeePay</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -788,12 +749,17 @@
       <div class="order-receipt-card" id="order-receipt-content"></div>
 
       <div class="success-actions-row">
-        <button class="btn-back" id="success-view-orders-btn">
-          <i class="fas fa-receipt"></i> Lihat Riwayat Pesanan
-        </button>
-        <button class="btn-confirm success-close-btn" id="success-close-btn">
-          <i class="fas fa-basket-shopping"></i> Belanja Lagi
-        </button>
+        <a class="btn-confirm btn-wa-order" id="success-wa-btn" href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> Konfirmasi Pesanan ke WhatsApp Kasir
+        </a>
+        <div class="success-sub-actions">
+          <button class="btn-back" id="success-view-orders-btn">
+            <i class="fas fa-receipt"></i> Lihat Riwayat Pesanan
+          </button>
+          <button class="btn-confirm success-close-btn" id="success-close-btn">
+            <i class="fas fa-basket-shopping"></i> Belanja Lagi
+          </button>
+        </div>
       </div>
     </div>
   </div>

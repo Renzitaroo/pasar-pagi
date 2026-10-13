@@ -2529,48 +2529,53 @@ body {
   gap: 0.35rem;
 }
 
-.qris-qr-wrapper {
+.qris-prep-wrapper {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
 
-.qris-qr-box {
-  background: #fff;
-  padding: 0.4rem;
-  border: 1px solid var(--line);
+.qris-prep-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: #f0fdf4;
+  border: 1.5px dashed #86efac;
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  padding: 1.1rem 0.9rem;
+  min-width: 135px;
   flex-shrink: 0;
+  text-align: center;
+}
+
+.qris-prep-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #16a34a;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+}
+
+.qris-prep-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #166534;
+  letter-spacing: 0.3px;
 }
 
 .qris-info {
   flex: 1;
 }
 
-.qris-countdown {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--orange);
-  background: var(--orange-soft);
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  margin-bottom: 0.5rem;
-}
-
-.qris-countdown strong {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.5px;
-}
-
 .qris-amount-box {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.45rem;
 }
 
 .qris-amount-box span {
@@ -2580,16 +2585,33 @@ body {
 }
 
 .qris-amount-box strong {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: var(--brown);
+  color: var(--olive);
 }
 
 .qris-guide-text {
   margin: 0;
-  font-size: 0.76rem;
-  line-height: 1.4;
+  font-size: 0.78rem;
+  line-height: 1.45;
   color: var(--brown-sub);
+}
+
+.qris-wallets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+}
+
+.wallet-chip {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
 }
 
 /* BANK TRANSFER CARD */
@@ -3285,8 +3307,52 @@ body {
 
 .success-actions-row {
   display: flex;
-  gap: 0.85rem;
-  margin-top: 1.2rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  width: 100%;
+}
+
+.btn-wa-order {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #25d366 !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  padding: 0.85rem 1.25rem !important;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn-wa-order:hover {
+  background: #20ba5a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.success-sub-actions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.success-sub-actions .btn-back,
+.success-sub-actions .btn-confirm {
+  flex: 1;
+}
+
+@media (max-width: 500px) {
+  .success-sub-actions {
+    flex-direction: column;
+  }
 }
 
 /* ============================================================
