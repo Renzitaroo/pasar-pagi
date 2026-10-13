@@ -191,14 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
   }
 
-  // Metode Pembayaran (QRIS, Bank, COD)
-  const BANK_ACCOUNTS = {
-    bca: { name: "Bank Central Asia (BCA)", code: "BCA", number: "8801 0812 3456 7890", rawNumber: "8801081234567890", holder: "PT PASAR PAGI SEGAR INDONESIA" },
-    mandiri: { name: "Bank Mandiri", code: "Mandiri", number: "8902 0812 3456 7890", rawNumber: "8902081234567890", holder: "PT PASAR PAGI SEGAR INDONESIA" },
-    bri: { name: "Bank Rakyat Indonesia (BRI)", code: "BRI", number: "8805 0812 3456 7890", rawNumber: "8805081234567890", holder: "PT PASAR PAGI SEGAR INDONESIA" },
-    bni: { name: "Bank Negara Indonesia (BNI)", code: "BNI", number: "8808 0812 3456 7890", rawNumber: "8808081234567890", holder: "PT PASAR PAGI SEGAR INDONESIA" }
-  };
-  let selectedBank = "bca";
+  // Metode Pembayaran (QRIS & COD)
   let activePaymentMethod = "qris";
   let qrisTimerInterval = null;
   let qrisSecondsLeft = 15 * 60;
@@ -1033,34 +1026,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (confirmBtn) {
       if (methodKey === "qris") {
         confirmBtn.innerHTML = `<i class="fas fa-qrcode"></i> Terbitkan & Bayar QRIS`;
-      } else if (methodKey === "transfer") {
-        confirmBtn.innerHTML = `<i class="fas fa-check-circle"></i> Konfirmasi Transfer Bank`;
-      } else if (methodKey === "cod") {
+      } else {
         confirmBtn.innerHTML = `<i class="fas fa-truck-fast"></i> Pesan Sekarang (COD)`;
       }
-    }
-  }
-
-  function selectBank(bankKey) {
-    if (!BANK_ACCOUNTS[bankKey]) return;
-    selectedBank = bankKey;
-    document.querySelectorAll(".bank-chip").forEach(chip => {
-      chip.classList.toggle("active", chip.dataset.bank === bankKey);
-    });
-    const acc = BANK_ACCOUNTS[bankKey];
-    const nameEl = document.getElementById("selected-bank-name");
-    const numEl = document.getElementById("selected-bank-number");
-    if (nameEl) nameEl.textContent = acc.name;
-    if (numEl) numEl.textContent = acc.number;
-  }
-
-  function copyBankAccount() {
-    const acc = BANK_ACCOUNTS[selectedBank];
-    if (!acc) return;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(acc.rawNumber).then(() => {
-        showToast(`Nomor rekening <strong>${acc.code} (${acc.rawNumber})</strong> berhasil disalin!`);
-      }).catch(() => {});
     }
   }
 
@@ -1172,7 +1140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (qrisAmountEl) qrisAmountEl.textContent = formatMoney(breakdown.total);
 
     selectPaymentMethod(activePaymentMethod || "qris");
-    selectBank(selectedBank || "bca");
 
     reviewModal.classList.add("open");
     document.body.classList.add("modal-open");
@@ -1225,17 +1192,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let paymentMethodName = "QRIS Dinamis Mandiri";
       let orderStatus = "Menunggu Pembayaran";
-      let bankInfo = null;
       let mpgData = null;
 
       const confirmBtn = document.getElementById("review-confirm");
       const originalBtnContent = confirmBtn ? confirmBtn.innerHTML : "";
 
-      if (activePaymentMethod === "transfer") {
-        bankInfo = BANK_ACCOUNTS[selectedBank] || BANK_ACCOUNTS.bca;
-        paymentMethodName = `Transfer Bank (${bankInfo.code})`;
-        orderStatus = "Menunggu Pembayaran";
-      } else if (activePaymentMethod === "cod") {
+      if (activePaymentMethod === "cod") {
         paymentMethodName = "Bayar di Tempat (COD)";
         orderStatus = "Diproses";
       } else {
@@ -1258,11 +1220,10 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         } catch (err) {
           console.warn("[QRIS_FALLBACK]", err.message);
-          bankInfo = BANK_ACCOUNTS[selectedBank] || BANK_ACCOUNTS.bca;
-          activePaymentMethod = "transfer";
-          paymentMethodName = `Transfer Bank (${bankInfo.code}) [Fallback Gateway]`;
-          orderStatus = "Menunggu Pembayaran";
-          showToast("Koneksi QRIS sedang sibuk. Pesanan dialihkan ke Transfer Bank agar tetap aman tersimpan!");
+          activePaymentMethod = "cod";
+          paymentMethodName = "Bayar di Tempat (COD) [Fallback]";
+          orderStatus = "Diproses";
+          showToast("Koneksi QRIS sedang sibuk. Pesanan dialihkan ke Bayar di Tempat (COD)!");
         } finally {
           if (confirmBtn) {
             confirmBtn.disabled = false;
@@ -1300,7 +1261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         breakdown,
         paymentMethod: activePaymentMethod,
         paymentMethodName,
-        bank: bankInfo,
+        bank: null,
         status: orderStatus,
         note: orderNote,
         checkoutUrl: mpgData ? mpgData.checkoutUrl : null,
@@ -1357,18 +1318,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
 
     let paymentDetailHtml = "";
-    if (order.paymentMethod === "transfer" && order.bank) {
-      paymentDetailHtml = `
-        <div class="receipt-payment-guide-box">
-          <p><i class="fas fa-building-columns"></i> Transfer ke <strong>${order.bank.name}</strong>:</p>
-          <div class="receipt-acc-row">
-            <code>${order.bank.number}</code>
-            <span>a.n ${order.bank.holder}</span>
-          </div>
-          <small>Status: <strong style="color: #f57f17;">Menunggu Transfer</strong>. Silakan kirim bukti transfer ke WhatsApp kasir.</small>
-        </div>
-      `;
-    } else if (order.paymentMethod === "cod") {
+    if (order.paymentMethod === "cod") {
       paymentDetailHtml = `
         <div class="receipt-payment-guide-box">
           <p><i class="fas fa-hand-holding-dollar"></i> Metode: <strong>Bayar di Tempat (COD)</strong></p>
@@ -1813,16 +1763,6 @@ Mohon segera diproses dan dikirimkan ya, terima kasih! 🌱`;
       selectPaymentMethod(method);
       return;
     }
-
-    const bankChip = target.closest(".bank-chip");
-    if (bankChip && bankChip.dataset.bank) {
-      selectBank(bankChip.dataset.bank);
-      return;
-    }
-
-    if (target.id === "btn-copy-account" || target.closest("#btn-copy-account")) {
-      copyBankAccount();
-    }
   });
 
   document.addEventListener("click", (e) => {
@@ -1948,7 +1888,6 @@ Mohon segera diproses dan dikirimkan ya, terima kasih! 🌱`;
 
   updateAuthUI();
   initGoogleAuth();
-  selectBank("bca");
   selectPaymentMethod("qris");
 
   const initialHash = window.location.hash.toLowerCase();

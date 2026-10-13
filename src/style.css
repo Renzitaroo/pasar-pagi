@@ -1631,7 +1631,7 @@ body {
 
 .payment-options {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
 }
 
@@ -2612,139 +2612,6 @@ body {
   background: #f1f5f9;
   color: #334155;
   border: 1px solid #e2e8f0;
-}
-
-/* BANK TRANSFER CARD */
-.bank-transfer-card {
-  background: #fff;
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 1rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.bank-selector-row {
-  display: flex;
-  gap: 0.4rem;
-  margin-bottom: 0.9rem;
-}
-
-.bank-chip {
-  flex: 1;
-  padding: 0.5rem 0.4rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: #faf6f0;
-  color: var(--brown);
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  transition: all 0.2s ease;
-}
-
-.bank-chip:hover {
-  background: #f1e7db;
-}
-
-.bank-chip.active {
-  background: var(--olive);
-  border-color: var(--olive);
-  color: white;
-}
-
-.bank-account-box {
-  background: #faf5ee;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 1rem;
-  margin-bottom: 0.85rem;
-}
-
-.bank-account-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.35rem;
-}
-
-.bank-name-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--brown);
-}
-
-.bank-badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: var(--olive);
-  background: var(--olive-soft);
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-}
-
-.bank-account-number-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 0.35rem;
-}
-
-.bank-number {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: var(--brown);
-}
-
-.btn-copy-acc {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--brown);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-copy-acc:hover {
-  background: var(--olive);
-  color: white;
-  border-color: var(--olive);
-}
-
-.bank-holder-info {
-  font-size: 0.75rem;
-  color: var(--brown-sub);
-}
-
-.transfer-steps-box h6 {
-  margin: 0 0 0.35rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--brown-sub);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.transfer-steps-box ol {
-  margin: 0;
-  padding-left: 1.2rem;
-  font-size: 0.74rem;
-  color: var(--brown-sub);
-  line-height: 1.45;
 }
 
 /* COD CARD */
