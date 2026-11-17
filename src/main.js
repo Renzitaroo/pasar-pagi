@@ -1357,8 +1357,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     receiptEl.innerHTML = `
       <div class="receipt-header">
+        <div class="receipt-brand-row">
+          <img src="/assets/brand/logo-transparent.png" alt="Pasar Pagi" class="receipt-logo-img">
+          <div>
+            <h4 class="receipt-brand-title">Pasar Pagi</h4>
+            <span class="receipt-brand-sub">Struk Resmi Belanja Segar</span>
+          </div>
+        </div>
         <div class="receipt-id-tag">No. Pesanan: <strong>#${order.id}</strong></div>
-        <div class="receipt-date">${order.displayDate}</div>
       </div>
       <div class="receipt-divider"></div>
       <div class="receipt-items-box">${itemsListHtml}</div>

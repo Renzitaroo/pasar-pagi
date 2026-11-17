@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pasar Pagi — Belanja Buah & Sayur Segar Harian</title>
   <meta name="description" content="Belanja buah segar dan sayuran kebun kualitas pilihan dengan harga langsung dari petani mitra.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/brand/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,SOFT,wght@0,9..144,50..100,600..700;1,9..144,50..100,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Google Identity Services (GIS) SDK -->
@@ -17,6 +20,9 @@
   <!-- HEADER & NAVIGATION (MODERN E-COMMERCE STICKY BAR) -->
   <header class="header">
     <div class="brand" id="brand-logo" title="Kembali ke Beranda">
+      <div class="brand-logo-wrap">
+        <img src="/assets/brand/logo-transparent.png" alt="Pasar Pagi Logo" class="brand-logo-img">
+      </div>
       <div class="brand-logo-copy">
         <h1 class="brand-title">Pasar Pagi</h1>
         <span class="brand-tagline">Number one freshness</span>
@@ -113,7 +119,6 @@
     <section class="ecom-bento-top" aria-label="Banner Utama">
       <div class="ecom-main-banner">
         <div class="ecom-banner-copy">
-          <span class="ecom-banner-pill">Panen Pagi • Pengiriman Instan</span>
           <h2 class="ecom-banner-title">Sayur & Buah Segar Langsung dari Kebun</h2>
           <p class="ecom-banner-desc">
             Belanja sayur & buah harian gak perlu ribet. Stok baru tiap pagi, langsung diantar ke depan pintu.
@@ -488,6 +493,9 @@
   <div class="modal-overlay" id="login-modal" role="dialog" aria-modal="true">
     <div class="modal-card login-card">
       <div class="modal-header">
+        <div class="modal-brand-hero">
+          <img src="/assets/brand/logo-transparent.png" alt="Pasar Pagi Logo" class="modal-brand-logo-img">
+        </div>
         <div class="modal-badge"><i class="fab fa-google"></i> Masuk Akun Customer</div>
         <h3>Selamat Datang di Pasar Pagi</h3>
         <p class="modal-sub">Masuk dengan akun Google untuk kemudahan pelacakan pesanan, alamat otomatis, dan promo petani.</p>
@@ -723,7 +731,11 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <p class="footer-brand"><strong>Pasar Pagi</strong> — Dari Alam, Untuk Harimu.</p>
+      <div class="footer-brand-wrap">
+        <img src="/assets/brand/logo-transparent.png" alt="Pasar Pagi Logo" class="footer-logo-img">
+        <span class="footer-brand-title">Pasar Pagi</span>
+      </div>
+      <p class="footer-brand">Dari Alam, Untuk Harimu. Sayuran & Buah Segar Panen Setiap Pagi Langsung dari Petani Lokal.</p>
       <p class="footer-copy">&copy; 2026 Pasar Pagi. Dibuat & Diaudit dengan Kejujuran Kode 100%.</p>
     </div>
   </footer>
